@@ -49,8 +49,8 @@ def main():
             except: print("❌ Error.")
             
         elif opcion == '5':
-            # AQUÍ ESTÁ LA CORRECCIÓN: Comillas dobles para que Windows no se confunda
-            os.system('git add . && git commit -m "Actualizacion Astral Limit" && git push')
+            # AQUÍ ESTÁ LA MAGIA: Le añadimos '-u origin main' para que siempre sepa el camino
+            os.system('git add . && git commit -m "Actualizacion Astral Limit" && git push -u origin main')
             print("🚀 ¡Enviado a internet!")
         elif opcion == '6': break
 

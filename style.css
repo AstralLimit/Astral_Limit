@@ -6,7 +6,7 @@
 }
 
 body {
-    background-color: var(--fondo-negro);
+    background-color: var(--fondo-negro) !important; /* Forzamos el fondo negro */
     color: var(--texto-blanco);
     font-family: 'Montserrat', sans-serif;
     margin: 0;
@@ -15,6 +15,7 @@ body {
     transition: background 0.5s ease;
 }
 
+/* --- CABECERA (ESQUINA SUPERIOR IZQUIERDA) --- */
 header {
     display: flex;
     align-items: center;
@@ -41,6 +42,7 @@ header {
     text-shadow: 0 0 10px rgba(255,255,255,0.6), 0 0 20px rgba(255,255,255,0.3);
 }
 
+/* --- VISTA 1: CUADRÍCULA DE MARCAS --- */
 .contenedor-marcas {
     display: flex;
     flex-wrap: wrap;
@@ -71,17 +73,30 @@ header {
     border-radius: 50%;
 }
 
-.pantalla-oculta { display: none; opacity: 0; }
+/* --- VISTA 2: PANTALLA DE BIENVENIDA --- */
+.pantalla-oculta {
+    display: none !important;
+}
 
 .pantalla-activa {
-    display: flex; justify-content: center; align-items: center;
-    height: 100vh; width: 100vw; position: fixed; top: 0; left: 0;
-    background-color: var(--fondo-negro); opacity: 1;
-    transition: opacity 0.8s ease; z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--fondo-negro);
+    opacity: 1;
+    transition: opacity 0.8s ease;
+    z-index: 100;
 }
 
 .contenido-bienvenida {
-    text-align: center; max-width: 600px; padding: 40px;
+    text-align: center;
+    max-width: 600px;
+    padding: 40px;
     animation: aparecer 0.8s ease forwards;
 }
 
@@ -90,21 +105,64 @@ header {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-#bienvenida-logo { width: 150px; margin-bottom: 20px; }
-#bienvenida-titulo { font-family: 'Cinzel', serif; font-size: 2.5rem; margin-bottom: 15px; letter-spacing: 2px; }
-#bienvenida-mensaje { font-size: 1.1rem; line-height: 1.6; color: var(--acento-plata); margin-bottom: 40px; }
+#bienvenida-logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
 
-.botones-bienvenida { display: flex; flex-direction: column; gap: 15px; align-items: center; }
+#bienvenida-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+#bienvenida-mensaje {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--acento-plata);
+    margin-bottom: 40px;
+}
+
+/* BOTONES */
+.botones-bienvenida {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
 
 .btn-principal {
-    background-color: var(--brillo-astral); color: var(--fondo-negro);
-    border: none; padding: 15px 50px; font-size: 1.2rem; font-weight: 700;
-    letter-spacing: 3px; cursor: pointer; border-radius: 4px; transition: all 0.3s ease;
+    background-color: var(--brillo-astral);
+    color: var(--fondo-negro);
+    border: none;
+    padding: 15px 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
-.btn-principal:hover { box-shadow: 0 0 25px rgba(255,255,255,0.6); transform: scale(1.05); }
 
-.btn-secundario { background-color: transparent; color: var(--acento-plata); border: none; font-size: 0.9rem; cursor: pointer; text-decoration: underline; transition: 0.3s; }
-.btn-secundario:hover { color: var(--brillo-astral); }
+.btn-principal:hover {
+    box-shadow: 0 0 25px rgba(255,255,255,0.6);
+    transform: scale(1.05);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: var(--acento-plata);
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.btn-secundario:hover {
+    color: var(--brillo-astral);
+}
 
 @media (max-width: 600px) {
     header { padding: 20px; justify-content: center; flex-direction: column; }

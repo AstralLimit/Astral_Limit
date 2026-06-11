@@ -19,7 +19,7 @@ body {
     overflow-x: hidden;
 }
 
-/* --- CONTROL DE PANTALLAS (TRANSICIONES) --- */
+/* --- CONTROL DE PANTALLAS --- */
 .pantalla {
     width: 100%;
     min-height: 100vh;
@@ -28,7 +28,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 40px 20px;
+    padding: 40px 20px 80px 20px; /* Margen abajo para no tapar el footer */
     animation: fadeIn 0.6s ease forwards;
 }
 
@@ -91,19 +91,22 @@ body {
     width: 100%;
 }
 
-/* TARJETAS DE MARCAS MÁS ELEGANTES */
+/* --- NUEVAS TARJETAS LIMPIAS (SIN TÍTULO ABAJO, CON BANNER ARRIBA) --- */
 .tarjeta-marca {
     background-color: var(--gris-oscuro);
     border: 1px solid var(--lavanda-sutil);
     border-radius: 16px;
-    width: 260px;
-    padding: 35px 20px;
+    width: 280px;
+    height: 340px;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    overflow: hidden; /* Corta el banner superior para que encaje en el radio */
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    position: relative;
 }
 
 .tarjeta-marca:hover {
@@ -112,48 +115,43 @@ body {
     box-shadow: 0 15px 40px var(--neon-glow);
 }
 
-/* AQUÍ ESTÁ EL ARREGLO DEL CÍRCULO */
-.logo-recuadro {
-    width: 130px;
-    height: 130px;
+/* EL BANNER SUPERIOR (BLANCO CON LETRAS NEGRAS) */
+.banner-categoria-tarjeta {
+    width: 100%;
+    background-color: var(--plata-brillante);
+    color: var(--negro-absoluto);
+    padding: 10px 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    border-bottom: 1px solid var(--lavanda-sutil);
+}
+
+/* CONTENEDOR DE LA IMAGEN CENTRAL DE LA TARJETA */
+.contenedor-imagen-tarjeta {
+    width: 100%;
+    height: calc(100% - 40px); /* Resta el espacio del banner */
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
-    background-color: var(--negro-absoluto);
-    border: 2px solid var(--lavanda-sutil); /* Borde visible */
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
-    margin-bottom: 20px;
-    transition: transform 0.3s ease;
-    overflow: hidden; /* Esto corta las esquinas de cualquier imagen cuadrada */
-}
-
-.tarjeta-marca:hover .logo-recuadro {
-    transform: scale(1.05);
-    border-color: var(--plata-brillante);
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .img-marca-hub {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Asegura que la imagen llene el círculo */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Muestra el logo completo sin deformarlo ni recortarlo */
+    transition: transform 0.3s ease;
 }
 
-.nombre-marca-hub {
-    font-family: 'Cinzel', serif;
-    font-size: 1.3rem;
-    margin: 10px 0 5px 0;
-    letter-spacing: 1px;
+.tarjeta-marca:hover .img-marca-hub {
+    transform: scale(1.05);
 }
 
-.cat-marca-hub {
-    font-size: 0.8rem;
-    color: var(--plata-opaco);
-    margin: 0;
-    letter-spacing: 1px;
-}
-
-/* --- PANTALLA INTERNA DE BIENVENIDA --- */
+/* --- PANTALLA INTERNA DE BIENVENIDA (MANTIENE EL CÍRCULO INTERNO) --- */
 .tarjeta-presentacion {
     background-color: var(--gris-oscuro);
     border: 1px solid var(--lavanda-sutil);
@@ -212,12 +210,13 @@ body {
     font-weight: 300;
 }
 
-/* BOTONES CORPORATIVOS */
+/* BOTONES */
 .grupo-botones {
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    width: 100%;
 }
 
 .btn-corporativo {
@@ -251,12 +250,66 @@ body {
     transition: color 0.3s;
 }
 
-.btn-regresar:hover {
+.btn-regresar:hover { color: var(--plata-brillante); }
+
+/* --- SOPORTE PIE DE PÁGINA GLOBAL --- */
+.soporte-footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    background-color: rgba(10, 10, 15, 0.8);
+    border-top: 1px solid var(--lavanda-sutil);
+    font-size: 0.85rem;
+    color: var(--plata-opaco);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 50;
+    backdrop-filter: blur(5px);
+}
+
+.link-soporte {
     color: var(--plata-brillante);
+    text-decoration: underline;
+    font-weight: 600;
+}
+.link-soporte:hover {
+    color: #25d366; /* Tono verde WhatsApp al pasar el mouse */
+}
+
+/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
+#whatsapp-flotante {
+    position: fixed;
+    bottom: 80px; /* Colocado arriba del footer fijo */
+    right: 20px;
+    background-color: #25d366; /* Color oficial WhatsApp */
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+#whatsapp-flotante:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+}
+
+.icono-ws {
+    font-size: 1.8rem;
 }
 
 @media (max-width: 600px) {
     .titulo-astral { font-size: 1.8rem; }
     .tarjeta-presentacion { padding: 35px 20px; }
     .titulo-marca { font-size: 1.7rem; }
+    .soporte-footer { font-size: 0.75rem; padding: 15px 10px; }
+    #whatsapp-flotante { bottom: 90px; width: 50px; height: 50px; }
+    .icono-ws { font-size: 1.5rem; }
 }

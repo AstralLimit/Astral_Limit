@@ -1,22 +1,14 @@
-[
-    {
-        "id": 1,
-        "categoria": "perfumes",
-        "subseccion": "mujeres",
-        "nombre": "Perfume Elegance",
-        "precio": 750,
-        "stock": 2,
-        "desc": "Aroma dulce y encantador, con notas de vainilla y madera. Perfecto para destacar.",
-        "imagen": "📸 Foto"
+{
+    "Alqimia Luma": {
+        "estado": "abierto",
+        "productos": []
     },
-    {
-        "id": 2,
-        "categoria": "perfumes",
-        "subseccion": "hombres",
-        "nombre": "Perfume Night",
-        "precio": 750,
-        "stock": 4,
-        "desc": "Intenso y fresco, ideal para uso diario o para una salida en la noche.",
-        "imagen": "📸 Foto"
+    "Astral Moda": {
+        "estado": "abierto",
+        "productos": []
+    },
+    "Astral Tech": {
+        "estado": "abierto",
+        "productos": []
     }
-]
+}

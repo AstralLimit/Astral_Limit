@@ -1,16 +1,16 @@
 let carrito = {}; 
-let totalPrecio = 0;
-let totalArticulos = 0;
+let totalPrecio = 0; let totalArticulos = 0;
 let catalogoPerfumes = [];
+let ofertasGlobales = {};
 
+// Fondo mágico
 function crearFondoMagico() {
     let contenedor = document.getElementById('contenedor-magico');
     let svgs = ["data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0 Q12 12 24 12 Q12 12 12 24 Q12 12 0 12 Q12 12 12 0 Z' fill='%23EFBF04'/%3E%3C/svg%3E"];
     for (let i = 0; i < 22; i++) {
         let estrella = document.createElement('div');
         estrella.className = 'estrella-js';
-        estrella.style.top = Math.random() * 100 + '%'; 
-        estrella.style.left = Math.random() * 100 + '%'; 
+        estrella.style.top = Math.random() * 100 + '%'; estrella.style.left = Math.random() * 100 + '%'; 
         let size = Math.random() * 100 + 40; 
         estrella.style.width = size + 'px'; estrella.style.height = size + 'px';
         estrella.style.backgroundImage = `url("${svgs[0]}")`;
@@ -20,24 +20,57 @@ function crearFondoMagico() {
 }
 crearFondoMagico();
 
-// Jalamos el inventario de la carpeta principal
-fetch('../productos.json')
+// Cargar Ofertas y luego Productos
+fetch('../ofertas.json')
     .then(r => r.json())
-    .then(datos => {
-        // Filtramos para quedarnos estrictamente con perfumes
-        catalogoPerfumes = datos.filter(p => p.categoria === 'perfumes');
-        renderizarCatalogo(catalogoPerfumes);
-    });
+    .then(ofertas => {
+        ofertasGlobales = ofertas;
+        colocarEtiquetasOferta();
+        
+        // Una vez cargadas las ofertas, cargamos los productos
+        fetch('../productos.json')
+            .then(r => r.json())
+            .then(datos => {
+                catalogoPerfumes = datos.filter(p => p.categoria === 'perfumes');
+                filtrarSeccion('todos'); // Iniciar mostrando todo
+            });
+    }).catch(e => console.log("Sin ofertas activas"));
 
-function renderizarCatalogo(productosArray) {
+// Pone la medallita roja en los botones del menú superior
+function colocarEtiquetasOferta() {
+    ['mujeres', 'hombres', 'niños'].forEach(cat => {
+        if(ofertasGlobales[cat] && ofertasGlobales[cat].activa) {
+            let btn = document.getElementById(`btn-${cat}`);
+            if(btn) btn.innerHTML += ` <span class="etiqueta-oferta">🔥 OFERTA</span>`;
+        }
+    });
+}
+
+function renderizarCatalogo(productosArray, seccionActual) {
     let contenedor = document.getElementById("contenedor-catalogo");
     contenedor.innerHTML = ""; 
+
+    // 1. Mostrar el Banner Rojo de Oferta si aplica
+    let bannerHTML = "";
+    if (seccionActual !== 'todos' && ofertasGlobales[seccionActual] && ofertasGlobales[seccionActual].activa) {
+        bannerHTML = `<div class="banner-oferta-contenedor" style="display:block;">
+                        <div class="banner-oferta-texto">${ofertasGlobales[seccionActual].texto}</div>
+                      </div>`;
+    }
+    contenedor.innerHTML += bannerHTML;
     
+    // 2. Si está vacío, mostrar el cartel GIGANTE
     if(productosArray.length === 0) {
-        contenedor.innerHTML = "<p style='color: #2B0071; font-weight: 600;'>No hay fragancias registradas en esta sección por el momento.</p>";
+        contenedor.innerHTML += `
+            <div class="contenedor-agotado">
+                <h1 class="texto-agotado-gigante">AGOTADO</h1>
+                <p class="subtexto-agotado">Nuestros alquimistas están elaborando nuevas esencias para esta sección.<br>¡Regresa pronto!</p>
+            </div>
+        `;
         return;
     }
 
+    // 3. Pintar productos
     productosArray.forEach(producto => {
         let esAgotado = producto.stock <= 0 ? "agotado" : "";
         let botonHTML = producto.stock > 0 
@@ -72,10 +105,10 @@ function filtrarSeccion(subseccion) {
     document.getElementById("titulo-tienda").innerText = titulos[subseccion];
 
     if (subseccion === 'todos') {
-        renderizarCatalogo(catalogoPerfumes);
+        renderizarCatalogo(catalogoPerfumes, subseccion);
     } else {
         let filtrados = catalogoPerfumes.filter(p => p.subseccion === subseccion);
-        renderizarCatalogo(filtrados);
+        renderizarCatalogo(filtrados, subseccion);
     }
 }
 
@@ -84,7 +117,6 @@ function agregarAlCarrito(nombre, precio) {
     else carrito[nombre] = { precio: precio, cantidad: 1 };
     totalPrecio += precio; totalArticulos += 1;
     document.getElementById("contador").innerText = totalArticulos;
-    alert("🌙 ¡Agregaste " + nombre + " a tu pedido!");
 }
 
 function abrirCarrito() {
@@ -109,5 +141,7 @@ function enviarPedido() {
         mensaje += `✨ ${item.cantidad}x ${nombre} ($${item.precio * item.cantidad})%0A`;
     }
     mensaje += "%0A*Total a pagar: $" + totalPrecio + "*";
-    window.open("https://wa.me/525649314239?text=" + mensaje, "_blank");
+    
+    // NÚMERO CORREGIDO ESPECÍFICO DE ALQIMIA LUMA
+    window.open("https://wa.me/525649314335?text=" + mensaje, "_blank");
 }

@@ -5,23 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alqimia Luma | Catálogo Mágico</title>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;0,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=2.0">
+    <link rel="stylesheet" href="style.css?v=2.1">
 </head>
 <body>
 
+    <!-- Fondo de estrellas aleatorias -->
     <div class="fondo-magico" id="contenedor-magico"></div>
 
+    <!-- Menú Fijo estilo Rappi con scroll horizontal para celular -->
     <nav class="menu-categorias">
-        <button class="btn-cat activo" onclick="filtrarSeccion('todos')">🌟 Mostrar Todo</button>
-        <button class="btn-cat" onclick="filtrarSeccion('mujeres')">✨ Mujeres</button>
-        <button class="btn-cat" onclick="filtrarSeccion('hombres')">🌙 Hombres</button>
-        <button class="btn-cat" onclick="filtrarSeccion('niños')">🧸 Niños</button>
+        <button class="btn-cat activo" id="btn-todos" onclick="filtrarSeccion('todos')">🌟 Mostrar Todo</button>
+        <button class="btn-cat" id="btn-mujeres" onclick="filtrarSeccion('mujeres')">✨ Mujeres</button>
+        <button class="btn-cat" id="btn-hombres" onclick="filtrarSeccion('hombres')">🌙 Hombres</button>
+        <button class="btn-cat" id="btn-niños" onclick="filtrarSeccion('niños')">🧸 Niños</button>
     </nav>
 
+    <!-- Carrito Flotante con Luna Gigante -->
     <div id="carrito-flotante" onclick="abrirCarrito()">
         <span class="luna-gigante">🌙</span> Pedido (<span id="contador">0</span>)
     </div>
 
+    <!-- Ventana Emergente del Carrito (Modal) -->
     <div id="modal-carrito" class="modal">
         <div class="modal-contenido">
             <span class="cerrar" onclick="cerrarCarrito()">&times;</span>
@@ -37,13 +41,15 @@
         <h1 class="titulo-gigante" id="titulo-tienda">ALQIMIA LUMA</h1>
     </header>
 
-    <div class="catalogo" id="contenedor-catalogo"></div>
+    <div class="catalogo" id="contenedor-catalogo">
+        <!-- Aquí se inyectan los productos, el banner de ofertas y el cartel de AGOTADO desde JS -->
+    </div>
 
     <footer class="pie-pagina">
-        <p>📞 Tel Matriz: 56 49 31 42 39</p>
-        <p><a href="../index.html" class="link-volver">← VOLVER AL MENÚ CENTRAL ASTRAL MATRIZ</a></p>
+        <p>📞 Contacto Alqimia Luma: +52 56 4931 4335</p>
+        <p><a href="../index.html" class="link-volver">← VOLVER AL MENÚ CENTRAL ASTRAL LIMIT</a></p>
     </footer>
 
-    <script src="script.js?v=2.0"></script>
+    <script src="script.js?v=2.1"></script>
 </body>
 </html>

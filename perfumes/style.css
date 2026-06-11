@@ -3,32 +3,63 @@
     --pergamino-oscuro: #e3d9be; 
     --deep-indigo: #2B0071;  
     --oro: #EFBF04;          
-    --lavanda: #D3D3FF;      
+    --lavanda: #D3D3FF;
+    --rojo-oferta: #d32f2f;      
 }
 
 body {
     background: radial-gradient(circle at top center, var(--pergamino) 0%, var(--pergamino-oscuro) 100%);
-    color: var(--deep-indigo);
-    font-family: 'Josefin Sans', sans-serif;
-    margin: 0; padding: 0; text-align: center; overflow-x: hidden;
-    padding-top: 80px;
+    color: var(--deep-indigo); font-family: 'Josefin Sans', sans-serif;
+    margin: 0; padding: 0; text-align: center; overflow-x: hidden; padding-top: 100px;
 }
 
-/* --- BARRA DE NAVEGACIÓN RAPPI --- */
+/* --- BARRA DE NAVEGACIÓN (Corregida para Celulares) --- */
 .menu-categorias {
     position: fixed; top: 0; left: 0; width: 100%;
     background-color: var(--deep-indigo);
-    display: flex; justify-content: center; gap: 15px; padding: 15px 10px;
+    display: flex; gap: 15px; padding: 15px 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000;
+    overflow-x: auto; /* Permite deslizar en celular */
+    white-space: nowrap; /* Evita que se amontonen abajo */
+    -webkit-overflow-scrolling: touch;
+    align-items: center;
 }
+.menu-categorias::-webkit-scrollbar { display: none; } /* Oculta la barrita fea */
+
 .btn-cat {
     background: transparent; color: var(--pergamino); border: 1px solid var(--lavanda);
     padding: 8px 20px; border-radius: 20px; font-size: 14px; cursor: pointer; transition: 0.3s;
-    font-family: 'Josefin Sans', sans-serif; font-weight: 600; width: auto;
+    font-family: 'Josefin Sans', sans-serif; font-weight: 600; flex-shrink: 0; /* Evita aplastamiento */
+    position: relative;
 }
 .btn-cat:hover, .btn-cat.activo { background: var(--oro); color: var(--deep-indigo); border-color: var(--oro); }
 
-/* --- CONTENEDOR MÁGICO DE ESTRELLAS GIGANTES --- */
+/* Etiqueta flotante de Oferta en el botón */
+.etiqueta-oferta {
+    position: absolute; top: -10px; right: -5px; background: var(--rojo-oferta); color: white;
+    font-size: 10px; padding: 3px 6px; border-radius: 10px; font-weight: bold; animation: palpitar 2s infinite;
+}
+@keyframes palpitar { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
+
+/* --- BANNER DE PROMOCIÓN GIGANTE --- */
+.banner-oferta-contenedor { width: 100%; display: none; margin-bottom: 20px; padding: 0 20px; box-sizing: border-box; }
+.banner-oferta-texto {
+    background-color: var(--rojo-oferta); color: white; padding: 15px; border-radius: 8px;
+    font-weight: bold; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
+    border: 2px dashed #fff; letter-spacing: 1px;
+}
+
+/* --- ESTADO AGOTADO GIGANTE --- */
+.contenedor-agotado {
+    padding: 80px 20px; text-align: center; width: 100%; box-sizing: border-box;
+}
+.texto-agotado-gigante {
+    font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--deep-indigo);
+    opacity: 0.3; margin: 0; letter-spacing: 10px;
+}
+.subtexto-agotado { font-size: 1.2rem; color: #666; font-weight: 600; }
+
+/* --- OTROS ESTILOS (IGUAL QUE ANTES) --- */
 .fondo-magico { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
 .estrella-js { position: absolute; background-size: contain; background-repeat: no-repeat; animation: latido-estrella 4s infinite alternate ease-in-out; }
 @keyframes latido-estrella { 0% { opacity: 0.15; transform: scale(0.85); } 100% { opacity: 0.8; transform: scale(1.15); } }
@@ -36,13 +67,12 @@ body {
 .pie-pagina { background-color: var(--deep-indigo); color: var(--pergamino); padding: 25px 0; margin-top: 50px; border-top: 2px solid var(--lavanda); }
 .link-volver { color: var(--oro); text-decoration: none; font-weight: bold; }
 
-header { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 40px 20px 20px 20px; }
+header { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 20px 20px 20px 20px; flex-wrap: wrap; }
 .logo-empresa { width: 120px; height: auto; border-radius: 50%; box-shadow: 0 4px 15px rgba(43, 0, 113, 0.2); }
-.titulo-gigante { font-family: 'Playfair Display', serif; font-size: 3.5rem; margin: 0; letter-spacing: 3px; color: var(--deep-indigo); }
+.titulo-gigante { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0; letter-spacing: 3px; color: var(--deep-indigo); }
 
-.catalogo { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 30px 20px; }
+.catalogo { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 10px 20px 40px 20px; }
 
-/* TARJETAS */
 .tarjeta {
     background-color: rgba(255, 255, 255, 0.95); border: 2px solid var(--lavanda); border-radius: 12px; padding: 25px; width: 280px;
     transition: all 0.4s ease-in-out; display: flex; flex-direction: column; align-items: center; position: relative; box-shadow: 0 8px 20px rgba(43, 0, 113, 0.1);
@@ -65,7 +95,6 @@ button.btn-comprar:disabled { background-color: #e0e0e0; color: #888; cursor: no
 /* CARRITO */
 #carrito-flotante { position: fixed; top: 80px; right: 20px; background-color: var(--deep-indigo); color: var(--oro); padding: 10px 25px; border-radius: 40px; font-size: 18px; font-weight: 600; cursor: pointer; box-shadow: 0 6px 20px rgba(43, 0, 113, 0.4); z-index: 1000; border: 2px solid var(--lavanda); display: flex; align-items: center; gap: 10px; }
 .luna-gigante { font-size: 3rem; filter: drop-shadow(0px 0px 5px rgba(239, 191, 4, 0.3)); }
-
 .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(43, 0, 113, 0.85); backdrop-filter: blur(6px); }
 .modal-contenido { background-color: var(--pergamino); margin: 12% auto; padding: 30px; border-radius: 12px; width: 85%; max-width: 400px; color: var(--deep-indigo); border: 2px solid var(--oro); box-shadow: 0 15px 50px rgba(43, 0, 113, 0.5); }
 .cerrar { color: var(--deep-indigo); float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
@@ -75,8 +104,9 @@ button.btn-comprar:disabled { background-color: #e0e0e0; color: #888; cursor: no
 .btn-whatsapp-modal { background-color: var(--oro); color: var(--deep-indigo); border: none; padding: 14px; width: 100%; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 15px; font-family: 'Josefin Sans', sans-serif; text-transform: uppercase; }
 
 @media (max-width: 600px) {
-    header { flex-direction: column; padding-top: 40px; }
+    header { flex-direction: column; padding-top: 10px; gap: 10px; }
     .titulo-gigante { font-size: 2.2rem; }
     #carrito-flotante { top: 75px; right: 10px; padding: 5px 15px; font-size: 14px; }
     .luna-gigante { font-size: 2rem; }
+    .texto-agotado-gigante { font-size: 2.5rem; }
 }

@@ -1,0 +1,14 @@
+{
+    "hombres": {
+        "activa": true,
+        "texto": "¡DÍA DEL PADRE! Llévate 2x1 en todas las fragancias de esta sección. 🎉"
+    },
+    "mujeres": {
+        "activa": false,
+        "texto": ""
+    },
+    "niños": {
+        "activa": false,
+        "texto": ""
+    }
+}

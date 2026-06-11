@@ -2,7 +2,7 @@
     {
         "id": 1,
         "nombre": "Alqimia Luma",
-        "categoria": "Fragancias Premium",
+        "categoria": "Tu sello personal",
         "logo": "Logo.png",
         "mensaje": "Adéntrate en el arte de la alta perfumería. Descubre esencias artesanales diseñadas para cautivar y dejar una huella imborrable. Tu viaje sensorial comienza aquí.",
         "enlace": "./perfumes/index.html"

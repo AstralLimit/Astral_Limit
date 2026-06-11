@@ -32,9 +32,7 @@ body {
     animation: fadeIn 0.6s ease forwards;
 }
 
-.web-oculta {
-    display: none !important;
-}
+.web-oculta { display: none !important; }
 
 @keyframes fadeIn {
     from { opacity: 0; transform: scale(0.98); }
@@ -69,14 +67,6 @@ body {
     text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-.subtitulo-astral {
-    font-size: 0.85rem;
-    letter-spacing: 5px;
-    color: var(--plata-opaco);
-    margin: 10px 0 0 0;
-    font-weight: 400;
-}
-
 /* --- SECTOR SELECTOR DE EMPRESAS --- */
 .seccion-marcas {
     width: 100%;
@@ -84,12 +74,13 @@ body {
 }
 
 .selector-titulo {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     letter-spacing: 3px;
-    color: var(--plata-opaco);
+    color: var(--plata-brillante);
     margin-bottom: 40px;
     font-weight: 600;
     text-align: center;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
 }
 
 .grid-marcas {
@@ -121,6 +112,7 @@ body {
     box-shadow: 0 15px 40px var(--neon-glow);
 }
 
+/* AQUÍ ESTÁ EL ARREGLO DEL CÍRCULO */
 .logo-recuadro {
     width: 130px;
     height: 130px;
@@ -128,19 +120,23 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%);
+    background-color: var(--negro-absoluto);
+    border: 2px solid var(--lavanda-sutil); /* Borde visible */
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
     margin-bottom: 20px;
     transition: transform 0.3s ease;
+    overflow: hidden; /* Esto corta las esquinas de cualquier imagen cuadrada */
 }
 
 .tarjeta-marca:hover .logo-recuadro {
     transform: scale(1.05);
+    border-color: var(--plata-brillante);
 }
 
 .img-marca-hub {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover; /* Asegura que la imagen llene el círculo */
 }
 
 .nombre-marca-hub {
@@ -180,12 +176,16 @@ body {
     width: 140px;
     height: 140px;
     margin: 0 auto 25px auto;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid var(--lavanda-sutil);
+    background-color: var(--negro-absoluto);
 }
 
 .contenedor-logo-marca img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
 }
 
 .tag-categoria {

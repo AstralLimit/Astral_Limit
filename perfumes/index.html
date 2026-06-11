@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alqimia Luma | Catálogo Mágico</title>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600&family=Playfair+Display:ital,wght@0,600;0,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=2.0">
+</head>
+<body>
+
+    <div class="fondo-magico" id="contenedor-magico"></div>
+
+    <nav class="menu-categorias">
+        <button class="btn-cat activo" onclick="filtrarSeccion('todos')">🌟 Mostrar Todo</button>
+        <button class="btn-cat" onclick="filtrarSeccion('mujeres')">✨ Mujeres</button>
+        <button class="btn-cat" onclick="filtrarSeccion('hombres')">🌙 Hombres</button>
+        <button class="btn-cat" onclick="filtrarSeccion('niños')">🧸 Niños</button>
+    </nav>
+
+    <div id="carrito-flotante" onclick="abrirCarrito()">
+        <span class="luna-gigante">🌙</span> Pedido (<span id="contador">0</span>)
+    </div>
+
+    <div id="modal-carrito" class="modal">
+        <div class="modal-contenido">
+            <span class="cerrar" onclick="cerrarCarrito()">&times;</span>
+            <h2 class="titulo-modal">Tu Pedido Mágico</h2>
+            <div id="lista-carrito"></div>
+            <p class="total-modal">Total: $<span id="total-precio">0</span></p>
+            <button class="btn-whatsapp-modal" onclick="enviarPedido()">Terminar pedido en WhatsApp 📲</button>
+        </div>
+    </div>
+
+    <header>
+        <img src="Logo.png" alt="Logo Alqimia Luma" class="logo-empresa">
+        <h1 class="titulo-gigante" id="titulo-tienda">ALQIMIA LUMA</h1>
+    </header>
+
+    <div class="catalogo" id="contenedor-catalogo"></div>
+
+    <footer class="pie-pagina">
+        <p>📞 Tel Matriz: 56 49 31 42 39</p>
+        <p><a href="../index.html" class="link-volver">← VOLVER AL MENÚ CENTRAL ASTRAL MATRIZ</a></p>
+    </footer>
+
+    <script src="script.js?v=2.0"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+:root {
+    --fondo-negro: #050505;
+    --texto-blanco: #E0E0E0;
+    --brillo-astral: #ffffff;
+    --acento-plata: #8a8a8a;
+}
+
+body {
+    background-color: var(--fondo-negro);
+    color: var(--texto-blanco);
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    transition: background 0.5s ease;
+}
+
+/* --- CABECERA (ESQUINA SUPERIOR IZQUIERDA) --- */
+header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 30px;
+    transition: opacity 0.5s ease;
+}
+
+.cabecera-activa { opacity: 1; pointer-events: auto; }
+.cabecera-oculta { opacity: 0; pointer-events: none; position: absolute; }
+
+.logo-astral {
+    width: 60px;
+    height: auto;
+    /* Filtro para asegurar que brille si el logo es oscuro */
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.titulo-astral {
+    font-family: 'Cinzel', serif;
+    font-size: 2rem;
+    margin: 0;
+    color: var(--brillo-astral);
+    letter-spacing: 4px;
+    /* Efecto reluciente/brillante */
+    text-shadow: 0 0 10px rgba(255,255,255,0.6), 0 0 20px rgba(255,255,255,0.3);
+}
+
+/* --- VISTA 1: CUADRÍCULA DE MARCAS --- */
+.contenedor-marcas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding: 80px 20px;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.marca-item {
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.marca-item:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.2));
+}
+
+.logo-marca {
+    width: 180px;
+    height: 180px;
+    object-fit: contain;
+    /* Fondo muy sutil para que el logo resalte si es transparente */
+    background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+}
+
+/* --- VISTA 2: PANTALLA DE BIENVENIDA --- */
+.pantalla-oculta {
+    display: none;
+    opacity: 0;
+}
+
+.pantalla-activa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: var(--fondo-negro);
+    opacity: 1;
+    transition: opacity 0.8s ease;
+    z-index: 100;
+}
+
+.contenido-bienvenida {
+    text-align: center;
+    max-width: 600px;
+    padding: 40px;
+    animation: aparecer 0.8s ease forwards;
+}
+
+@keyframes aparecer {
+    0% { transform: translateY(30px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+#bienvenida-logo {
+    width: 150px;
+    margin-bottom: 20px;
+}
+
+#bienvenida-titulo {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    letter-spacing: 2px;
+}
+
+#bienvenida-mensaje {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--acento-plata);
+    margin-bottom: 40px;
+}
+
+/* BOTONES */
+.botones-bienvenida {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.btn-principal {
+    background-color: var(--brillo-astral);
+    color: var(--fondo-negro);
+    border: none;
+    padding: 15px 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-principal:hover {
+    box-shadow: 0 0 25px rgba(255,255,255,0.6);
+    transform: scale(1.05);
+}
+
+.btn-secundario {
+    background-color: transparent;
+    color: var(--acento-plata);
+    border: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: 0.3s;
+}
+
+.btn-secundario:hover {
+    color: var(--brillo-astral);
+}
+
+@media (max-width: 600px) {
+    header { padding: 20px; justify-content: center; flex-direction: column; }
+    .titulo-astral { font-size: 1.5rem; }
+    .logo-marca { width: 140px; height: 140px; }
+}

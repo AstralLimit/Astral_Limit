@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "nombre": "Alqimia Luma",
+        "logo": "logo_alqimia.png",
+        "mensaje": "Bienvenido a Alqimia Luma. Adéntrate en un mundo de fragancias premium y magia embotellada. Tu viaje sensorial comienza aquí.",
+        "enlace": "https://alqimialuma.com" 
+    },
+    {
+        "id": 2,
+        "nombre": "Astral Tech",
+        "logo": "logo_tech.png",
+        "mensaje": "Bienvenido a nuestra división tecnológica. Innovación, diseño y el futuro al alcance de tus manos.",
+        "enlace": "https://astraltech.com"
+    }
+]

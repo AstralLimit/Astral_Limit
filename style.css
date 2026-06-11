@@ -1,0 +1,60 @@
+let empresasGlobal = [];
+
+// 1. Cargar las empresas desde el JSON
+fetch('empresas.json')
+    .then(respuesta => respuesta.json())
+    .then(datos => {
+        empresasGlobal = datos;
+        pintarMarcas();
+    });
+
+// 2. Dibujar los logos en la pantalla principal
+function pintarMarcas() {
+    const contenedor = document.getElementById("vista-marcas");
+    contenedor.innerHTML = "";
+
+    empresasGlobal.forEach(empresa => {
+        contenedor.innerHTML += `
+            <div class="marca-item" onclick="seleccionarMarca(${empresa.id})">
+                <img src="${empresa.logo}" alt="${empresa.nombre}" class="logo-marca" onerror="this.src='https://via.placeholder.com/180/222/fff?text=LOGO'">
+            </div>
+        `;
+    });
+}
+
+// 3. Ocultar el fondo y mostrar la bienvenida
+function seleccionarMarca(id) {
+    const empresa = empresasGlobal.find(e => e.id === id);
+    
+    // Ocultar cabecera y cuadrícula
+    document.getElementById("cabecera").classList.replace("cabecera-activa", "cabecera-oculta");
+    document.getElementById("vista-marcas").style.display = "none";
+    
+    // Llenar los datos de la bienvenida
+    document.getElementById("bienvenida-logo").src = empresa.logo;
+    document.getElementById("bienvenida-titulo").innerText = empresa.nombre.toUpperCase();
+    document.getElementById("bienvenida-mensaje").innerText = empresa.mensaje;
+    
+    // Configurar el botón Iniciar
+    const btnIniciar = document.getElementById("btn-iniciar");
+    btnIniciar.onclick = function() {
+        window.open(empresa.enlace, "_blank"); // Abre en una nueva pestaña
+    };
+
+    // Mostrar pantalla de bienvenida
+    const vistaBienvenida = document.getElementById("vista-bienvenida");
+    vistaBienvenida.classList.replace("pantalla-oculta", "pantalla-activa");
+}
+
+// 4. Botón Regresar
+function volverInicio() {
+    // Ocultar bienvenida
+    const vistaBienvenida = document.getElementById("vista-bienvenida");
+    vistaBienvenida.classList.replace("pantalla-activa", "pantalla-oculta");
+    
+    // Un pequeño retraso para que la animación termine antes de mostrar el fondo
+    setTimeout(() => {
+        document.getElementById("vista-marcas").style.display = "flex";
+        document.getElementById("cabecera").classList.replace("cabecera-oculta", "cabecera-activa");
+    }, 500);
+}

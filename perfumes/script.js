@@ -65,7 +65,6 @@ function renderizarCatalogo(productosArray, seccionActual) {
         contenedor.innerHTML += `<div class="banner-oferta-contenedor"><div class="banner-oferta-texto">${ofertasGlobales[seccionActual].texto}</div></div>`;
     }
     
-    // Si la subcategoría está vacía, se muestra dentro del cuadro elegante Deep Indigo
     if(productosArray.length === 0) {
         contenedor.innerHTML += `
             <div class="contenedor-agotado">
@@ -110,21 +109,33 @@ function filtrarSeccion(subseccion) {
     }
 }
 
+// CORRECCIÓN AQUÍ: Se cambió 'candy' por 'cantidad' para guardar el producto bien
 function agregarAlCarrito(nombre, precio) {
-    if (carrito[nombre]) carrito[nombre].cantidad += 1;
-    else carrito[nombre] = { precio: precio, candy: 1 };
-    totalPrecio += precio; totalArticulos += 1;
+    if (carrito[nombre]) {
+        carrito[nombre].cantidad += 1;
+    } else {
+        carrito[nombre] = { precio: precio, cantidad: 1 };
+    }
+    totalPrecio += precio; 
+    totalArticulos += 1;
     document.getElementById("contador").innerText = totalArticulos;
     alert("🌙 ¡Agregaste " + nombre + " al carrito!");
 }
 
+// CORRECCIÓN AQUÍ: Ahora lee correctamente la propiedad 'precio' y despliega el modal impecable
 function abrirCarrito() {
-    let divLista = document.getElementById("lista-carrito"); divLista.innerHTML = ""; 
-    if (totalArticulos === 0) divLista.innerHTML = "<p>Aún no has agregado ninguna esencia mágica.</p>";
-    else {
+    let divLista = document.getElementById("lista-carrito"); 
+    divLista.innerHTML = ""; 
+    if (totalArticulos === 0) {
+        divLista.innerHTML = "<p>Aún no has agregado ninguna esencia mágica.</p>";
+    } else {
         for (let nombre in carrito) {
             let item = carrito[nombre];
-            divLista.innerHTML += `<div class="item-carrito"><span>${item.cantidad}x ${nombre}</span><span>$${item.get('precio', 0) * item.cantidad}</span></div>`;
+            divLista.innerHTML += `
+                <div class="item-carrito">
+                    <span>${item.cantidad}x ${nombre}</span>
+                    <span>$${item.precio * item.cantidad}</span>
+                </div>`;
         }
     }
     document.getElementById("total-precio").innerText = totalPrecio;
@@ -135,7 +146,9 @@ function cerrarCarrito() { document.getElementById("modal-carrito").style.displa
 function enviarPedido() {
     if (totalArticulos === 0) return alert("Agrega productos antes de enviar.");
     let mensaje = "🛍️ *NUEVO PEDIDO DE ALQIMIA LUMA*%0A%0A";
-    for (let nombre in carrito) { mensaje += `✨ ${carrito[nombre].cantidad}x ${nombre}%0A`; }
+    for (let nombre in carrito) { 
+        mensaje += `✨ ${carrito[nombre].cantidad}x ${nombre}%0A`; 
+    }
     mensaje += "%0A*Total a pagar: $" + totalPrecio + "*";
     window.open("https://wa.me/525649314335?text=" + mensaje, "_blank");
 }

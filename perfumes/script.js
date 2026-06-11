@@ -6,9 +6,8 @@ let ofertasGlobales = {};
 // Fondo mágico con estrellas más densas (doradas y azules)
 function crearFondoMagico() {
     let contenedor = document.getElementById('contenedor-magico');
-    // Mezcla de colores para las estrellas (Doradas y Azules)
     let colores = ["%23EFBF04", "%232B0071"]; 
-    for (let i = 0; i < 45; i++) { // Doble de estrellas
+    for (let i = 0; i < 45; i++) {
         let estrella = document.createElement('div');
         estrella.className = 'estrella-js';
         estrella.style.top = Math.random() * 100 + '%'; 
@@ -28,15 +27,22 @@ fetch('../ofertas.json')
     .then(ofertas => {
         ofertasGlobales = ofertas;
         colocarEtiquetasOferta();
+        
         fetch('../productos.json')
             .then(r => r.json())
             .then(datos => {
                 let sucursal = datos["Alqimia Luma"];
+                
                 if (sucursal.estado === "cerrado") {
-                    document.getElementById("contenedor-catalogo").innerHTML = `<div class="contenedor-agotado"><h1 class="texto-agotado-gigante">CERRADO</h1></div>`;
+                    document.getElementById("contenedor-catalogo").innerHTML = `
+                        <div class="contenedor-agotado">
+                            <h1 class="texto-agotado-gigante">CERRADO</h1>
+                            <p class="subtexto-agotado">La sucursal de Alqimia Luma no está recibiendo pedidos en este momento.<br>Disculpa las molestias.</p>
+                        </div>`;
+                    document.querySelector('.menu-categorias').style.pointerEvents = "none";
+                    document.querySelector('.menu-categorias').style.opacity = "0.5";
                 } else {
                     catalogoPerfumes = sucursal.productos;
-                    // REDIRECCIÓN DIRECTA: Forzamos "todos" al cargar
                     filtrarSeccion('todos'); 
                 }
             });
@@ -55,25 +61,33 @@ function renderizarCatalogo(productosArray, seccionActual) {
     let contenedor = document.getElementById("contenedor-catalogo");
     contenedor.innerHTML = ""; 
     
-    // Banner de ofertas
     if (seccionActual !== 'todos' && ofertasGlobales[seccionActual] && ofertasGlobales[seccionActual].activa) {
         contenedor.innerHTML += `<div class="banner-oferta-contenedor"><div class="banner-oferta-texto">${ofertasGlobales[seccionActual].texto}</div></div>`;
     }
     
+    // Si la subcategoría está vacía, se muestra dentro del cuadro elegante Deep Indigo
     if(productosArray.length === 0) {
-        contenedor.innerHTML += `<div class="contenedor-agotado"><h1 class="texto-agotado-gigante">AGOTADO</h1></div>`;
+        contenedor.innerHTML += `
+            <div class="contenedor-agotado">
+                <h1 class="texto-agotado-gigante">AGOTADO</h1>
+                <p class="subtexto-agotado">Nuestros alquimistas están elaborando nuevas esencias mágicas para esta sección.<br>¡Vuelve pronto!</p>
+            </div>`;
         return;
     }
 
     productosArray.forEach(producto => {
         let esAgotado = producto.stock <= 0 ? "agotado" : "";
         let botonHTML = producto.stock > 0 ? `<button class="btn-comprar" onclick="agregarAlCarrito('${producto.nombre}', ${producto.precio})">Comprar ahora</button>` : `<button class="btn-comprar" disabled>No disponible</button>`;
+        let textoStock = producto.stock > 0 ? `Disponibles: ${producto.stock} uds` : "Agotado";
+        
         contenedor.innerHTML += `
             <div class="tarjeta ${esAgotado}">
-                <p style="font-size:11px; font-weight:bold; letter-spacing:1px; margin-bottom:5px;">${producto.subseccion.toUpperCase()}</p>
+                <p style="font-size:11px; color:#666; text-transform:uppercase; font-weight:bold; letter-spacing:1px; margin-bottom:5px;">Para: ${producto.subseccion}</p>
                 <h2>${producto.nombre}</h2>
                 <div class="imagen-placeholder">${producto.imagen}</div>
+                <p class="desc">${producto.desc}</p>
                 <p class="precio">$${producto.precio}</p>
+                <p class="stock">${textoStock}</p>
                 ${botonHTML}
             </div>
         `;
@@ -98,17 +112,20 @@ function filtrarSeccion(subseccion) {
 
 function agregarAlCarrito(nombre, precio) {
     if (carrito[nombre]) carrito[nombre].cantidad += 1;
-    else carrito[nombre] = { precio: precio, cantidad: 1 };
+    else carrito[nombre] = { precio: precio, candy: 1 };
     totalPrecio += precio; totalArticulos += 1;
     document.getElementById("contador").innerText = totalArticulos;
-    alert("🌙 ¡" + nombre + " al carrito!");
+    alert("🌙 ¡Agregaste " + nombre + " al carrito!");
 }
 
 function abrirCarrito() {
     let divLista = document.getElementById("lista-carrito"); divLista.innerHTML = ""; 
-    for (let nombre in carrito) {
-        let item = carrito[nombre];
-        divLista.innerHTML += `<div class="item-carrito"><span>${item.cantidad}x ${nombre}</span><span>$${item.cantidad * item.precio}</span></div>`;
+    if (totalArticulos === 0) divLista.innerHTML = "<p>Aún no has agregado ninguna esencia mágica.</p>";
+    else {
+        for (let nombre in carrito) {
+            let item = carrito[nombre];
+            divLista.innerHTML += `<div class="item-carrito"><span>${item.cantidad}x ${nombre}</span><span>$${item.get('precio', 0) * item.cantidad}</span></div>`;
+        }
     }
     document.getElementById("total-precio").innerText = totalPrecio;
     document.getElementById("modal-carrito").style.display = "block";
@@ -116,7 +133,9 @@ function abrirCarrito() {
 function cerrarCarrito() { document.getElementById("modal-carrito").style.display = "none"; }
 
 function enviarPedido() {
-    let mensaje = "🛍️ *PEDIDO ALQIMIA LUMA*%0A%0A";
+    if (totalArticulos === 0) return alert("Agrega productos antes de enviar.");
+    let mensaje = "🛍️ *NUEVO PEDIDO DE ALQIMIA LUMA*%0A%0A";
     for (let nombre in carrito) { mensaje += `✨ ${carrito[nombre].cantidad}x ${nombre}%0A`; }
+    mensaje += "%0A*Total a pagar: $" + totalPrecio + "*";
     window.open("https://wa.me/525649314335?text=" + mensaje, "_blank");
 }

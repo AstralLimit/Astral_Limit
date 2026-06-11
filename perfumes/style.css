@@ -13,84 +13,102 @@ body {
     margin: 0; padding: 0; text-align: center; overflow-x: hidden; padding-top: 100px;
 }
 
-/* --- BARRA DE NAVEGACIÓN (Corregida para Celulares) --- */
+/* --- BARRA DE NAVEGACIÓN (Scroll horizontal en celular) --- */
 .menu-categorias {
     position: fixed; top: 0; left: 0; width: 100%;
     background-color: var(--deep-indigo);
     display: flex; gap: 15px; padding: 15px 20px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000;
-    overflow-x: auto; /* Permite deslizar en celular */
-    white-space: nowrap; /* Evita que se amontonen abajo */
-    -webkit-overflow-scrolling: touch;
-    align-items: center;
+    overflow-x: auto; white-space: nowrap; 
+    -webkit-overflow-scrolling: touch; align-items: center;
 }
-.menu-categorias::-webkit-scrollbar { display: none; } /* Oculta la barrita fea */
+.menu-categorias::-webkit-scrollbar { display: none; }
 
 .btn-cat {
     background: transparent; color: var(--pergamino); border: 1px solid var(--lavanda);
     padding: 8px 20px; border-radius: 20px; font-size: 14px; cursor: pointer; transition: 0.3s;
-    font-family: 'Josefin Sans', sans-serif; font-weight: 600; flex-shrink: 0; /* Evita aplastamiento */
-    position: relative;
+    font-family: 'Josefin Sans', sans-serif; font-weight: 600; flex-shrink: 0; position: relative;
 }
 .btn-cat:hover, .btn-cat.activo { background: var(--oro); color: var(--deep-indigo); border-color: var(--oro); }
 
-/* Etiqueta flotante de Oferta en el botón */
+/* Medallita de Oferta */
 .etiqueta-oferta {
     position: absolute; top: -10px; right: -5px; background: var(--rojo-oferta); color: white;
     font-size: 10px; padding: 3px 6px; border-radius: 10px; font-weight: bold; animation: palpitar 2s infinite;
 }
 @keyframes palpitar { 0% {transform: scale(1);} 50% {transform: scale(1.1);} 100% {transform: scale(1);} }
 
-/* --- BANNER DE PROMOCIÓN GIGANTE --- */
-.banner-oferta-contenedor { width: 100%; display: none; margin-bottom: 20px; padding: 0 20px; box-sizing: border-box; }
+/* --- BANNER DE OFERTA EN EL CATÁLOGO --- */
+.banner-oferta-contenedor { width: 100%; margin-bottom: 30px; padding: 0 20px; box-sizing: border-box; }
 .banner-oferta-texto {
     background-color: var(--rojo-oferta); color: white; padding: 15px; border-radius: 8px;
     font-weight: bold; font-size: 1.1rem; box-shadow: 0 5px 15px rgba(211, 47, 47, 0.4);
     border: 2px dashed #fff; letter-spacing: 1px;
 }
 
-/* --- ESTADO AGOTADO GIGANTE --- */
+/* --- CUADRO PROTECTOR PARA AGOTADO / CERRADO (CORREGIDO) --- */
 .contenedor-agotado {
-    padding: 80px 20px; text-align: center; width: 100%; box-sizing: border-box;
+    background-color: var(--deep-indigo);
+    border: 3px solid var(--oro);
+    border-radius: 16px;
+    padding: 40px 30px;
+    max-width: 450px;
+    margin: 50px auto;
+    box-shadow: 0 10px 30px rgba(43, 0, 113, 0.4);
+    text-align: center;
+    box-sizing: border-box;
 }
 .texto-agotado-gigante {
-    font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--deep-indigo);
-    opacity: 0.3; margin: 0; letter-spacing: 10px;
+    font-family: 'Playfair Display', serif; 
+    font-size: 3rem; 
+    color: var(--oro);
+    margin: 0 0 15px 0; 
+    letter-spacing: 6px;
+    text-shadow: 0 0 10px rgba(239, 191, 4, 0.5);
 }
-.subtexto-agotado { font-size: 1.2rem; color: #666; font-weight: 600; }
+.subtexto-agotado { 
+    font-size: 1.1rem; 
+    color: var(--pergamino); 
+    font-weight: 400;
+    line-height: 1.6;
+    margin: 0;
+}
 
-/* --- OTROS ESTILOS (IGUAL QUE ANTES) --- */
+/* --- CIELO DE ESTRELLAS --- */
 .fondo-magico { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; overflow: hidden; }
 .estrella-js { position: absolute; background-size: contain; background-repeat: no-repeat; animation: latido-estrella 4s infinite alternate ease-in-out; }
-@keyframes latido-estrella { 0% { opacity: 0.15; transform: scale(0.85); } 100% { opacity: 0.8; transform: scale(1.15); } }
+@keyframes latido-estrella { 0% { opacity: 0.15; transform: scale(0.85); } 100% { opacity: 0.7; transform: scale(1.15); } }
 
 .pie-pagina { background-color: var(--deep-indigo); color: var(--pergamino); padding: 25px 0; margin-top: 50px; border-top: 2px solid var(--lavanda); }
 .link-volver { color: var(--oro); text-decoration: none; font-weight: bold; }
 
-header { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 20px 20px 20px 20px; flex-wrap: wrap; }
+header { display: flex; justify-content: center; align-items: center; gap: 20px; padding: 20px; flex-wrap: wrap; }
 .logo-empresa { width: 120px; height: auto; border-radius: 50%; box-shadow: 0 4px 15px rgba(43, 0, 113, 0.2); }
 .titulo-gigante { font-family: 'Playfair Display', serif; font-size: 3rem; margin: 0; letter-spacing: 3px; color: var(--deep-indigo); }
 
 .catalogo { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; padding: 10px 20px 40px 20px; }
 
+/* TARJETAS DE PRODUCTOS */
 .tarjeta {
     background-color: rgba(255, 255, 255, 0.95); border: 2px solid var(--lavanda); border-radius: 12px; padding: 25px; width: 280px;
     transition: all 0.4s ease-in-out; display: flex; flex-direction: column; align-items: center; position: relative; box-shadow: 0 8px 20px rgba(43, 0, 113, 0.1);
 }
 .tarjeta:hover { transform: translateY(-8px); border-color: var(--deep-indigo); box-shadow: 0 12px 30px rgba(43, 0, 113, 0.25); }
-.tarjeta h2 { margin-top: 0; font-size: 1.6rem; font-family: 'Playfair Display', serif; }
+.tarjeta h2 { margin-top: 0; font-size: 1.6rem; font-family: 'Playfair Display', serif; color: var(--deep-indigo); }
 
-.imagen-placeholder { width: 100%; height: 200px; background-color: rgba(241, 233, 210, 0.4); display: flex; align-items: center; justify-content: center; border-radius: 8px; margin: 15px 0; color: var(--deep-indigo); border: 1px dashed var(--lavanda); }
+.imagen-placeholder { font-size: 4rem; width: 100%; height: 160px; background-color: rgba(241, 233, 210, 0.4); display: flex; align-items: center; justify-content: center; border-radius: 8px; margin: 15px 0; color: var(--deep-indigo); border: 1px dashed var(--lavanda); }
+.desc { font-size: 14px; color: #444; line-height: 1.4; margin: 0 0 15px 0; min-height: 40px; }
 .precio { font-size: 26px; font-weight: 600; color: var(--deep-indigo); margin: 10px 0; }
-.stock { color: #666; font-size: 14px; margin-bottom: 20px; }
+.stock { color: #666; font-size: 14px; margin-bottom: 20px; font-weight: bold; }
 
 button.btn-comprar {
     background-color: var(--oro); color: var(--deep-indigo); border: none; padding: 14px 20px; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; width: 100%; transition: 0.3s; font-family: 'Josefin Sans', sans-serif; text-transform: uppercase;
 }
-button.btn-comprar:hover:not([disabled]) { transform: scale(1.05); box-shadow: 0 0 25px rgba(239, 191, 4, 1), 0 0 10px rgba(239, 191, 4, 0.5); }
+button.btn-comprar:hover:not([disabled]) { transform: scale(1.05); box-shadow: 0 0 25px rgba(239, 191, 4, 1); }
 button.btn-comprar:disabled { background-color: #e0e0e0; color: #888; cursor: not-allowed; }
 
-.tarjeta.agotado::after { content: "AGOTADO"; position: absolute; top: 45%; left: -15%; width: 130%; background-color: var(--deep-indigo); color: var(--oro); font-size: 1.5rem; font-weight: 600; transform: rotate(-25deg); text-align: center; padding: 10px 0; box-shadow: 0 4px 15px rgba(43, 0, 113, 0.4); z-index: 5; }
+/* Cinta diagonal en el producto individual agotado */
+.tarjeta.agotado::after { content: "AGOTADO"; position: absolute; top: 40%; left: -15%; width: 130%; background-color: var(--deep-indigo); color: var(--oro); font-size: 1.5rem; font-weight: 600; transform: rotate(-25deg); text-align: center; padding: 10px 0; box-shadow: 0 4px 15px rgba(43, 0, 113, 0.4); z-index: 5; }
 
 /* CARRITO */
 #carrito-flotante { position: fixed; top: 80px; right: 20px; background-color: var(--deep-indigo); color: var(--oro); padding: 10px 25px; border-radius: 40px; font-size: 18px; font-weight: 600; cursor: pointer; box-shadow: 0 6px 20px rgba(43, 0, 113, 0.4); z-index: 1000; border: 2px solid var(--lavanda); display: flex; align-items: center; gap: 10px; }
@@ -108,5 +126,7 @@ button.btn-comprar:disabled { background-color: #e0e0e0; color: #888; cursor: no
     .titulo-gigante { font-size: 2.2rem; }
     #carrito-flotante { top: 75px; right: 10px; padding: 5px 15px; font-size: 14px; }
     .luna-gigante { font-size: 2rem; }
-    .texto-agotado-gigante { font-size: 2.5rem; }
+    .contenedor-agotado { max-width: 90%; padding: 30px 20px; }
+    .texto-agotado-gigante { font-size: 2.2rem; }
+    .subtexto-agotado { font-size: 0.95rem; }
 }

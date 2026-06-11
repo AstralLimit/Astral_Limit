@@ -3,33 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Astral Limit | Matriz</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.1">
+    <title>Astral Limit | Hub Matrix</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=1.2">
 </head>
 <body>
 
-    <header id="cabecera" class="cabecera-activa">
-        <img src="logo_astral.png" alt="Logo" class="logo-astral">
-        <h1 class="titulo-astral">ASTRAL LIMIT</h1>
-    </header>
+    <div id="pantalla-hub" class="pantalla">
+        <header class="cabecera-astral">
+            <div class="logo-contenedor">
+                <img src="logo_astral.png" alt="Matrix Logo" class="logo-astral" onerror="this.style.display='none'">
+                <h1 class="titulo-astral">ASTRAL LIMIT</h1>
+            </div>
+            <p class="subtitulo-astral">CORPORATE ECOSYSTEM</p>
+        </header>
 
-    <main id="vista-marcas" class="contenedor-marcas">
+        <main class="seccion-marcas">
+            <h2 class="selector-titulo">SELECCIONA UNA DIVISIÓN</h2>
+            <div id="grid-marcas" class="grid-marcas">
+                </div>
         </main>
+    </div>
 
-    <div id="vista-bienvenida" class="pantalla-oculta">
-        <div class="contenido-bienvenida">
-            <img id="bienvenida-logo" src="" alt="Logo Marca">
-            <h2 id="bienvenida-titulo">Nombre de la Empresa</h2>
-            <p id="bienvenida-mensaje">Mensaje de bienvenida...</p>
+    <div id="pantalla-bienvenida" class="pantalla web-oculta">
+        <div class="tarjeta-presentacion">
+            <div class="contenedor-logo-marca">
+                <img id="marca-logo" src="" alt="Brand Logo">
+            </div>
+            <p id="marca-categoria" class="tag-categoria">CATEGORÍA</p>
+            <h2 id="marca-titulo" class="titulo-marca">NOMBRE DE MARCA</h2>
+            <p id="marca-mensaje" class="mensaje-marca">Mensaje descriptivo corporativo...</p>
             
-            <div class="botones-bienvenida">
-                <button id="btn-iniciar" class="btn-principal">INICIAR</button>
-                <button onclick="volverInicio()" class="btn-secundario">Regresar</button>
+            <div class="grupo-botones">
+                <button id="btn-iniciar" class="btn-corporativo btn-brillante">ACCEDER A LA PLATAFORMA</button>
+                <button onclick="navegarA('hub')" class="btn-regresar">← VOLVER AL MENÚ MATRIZ</button>
             </div>
         </div>
     </div>
 
-    <script src="script.js?v=1.1"></script>
+    <script src="script.js?v=1.2"></script>
 </body>
 </html>

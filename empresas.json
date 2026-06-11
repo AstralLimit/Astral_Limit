@@ -2,15 +2,25 @@
     {
         "id": 1,
         "nombre": "Alqimia Luma",
-        "logo": "logo_alqimia.png",
-        "mensaje": "Bienvenido a Alqimia Luma. Adéntrate en un mundo de fragancias premium y magia embotellada. Tu viaje sensorial comienza aquí.",
-        "enlace": "https://alqimialuma.com" 
+        "categoria": "Fragancias Premium",
+        "logo": "Logo.png",
+        "mensaje": "Adéntrate en el arte de la alta perfumería. Descubre esencias artesanales diseñadas para cautivar y dejar una huella imborrable. Tu viaje sensorial comienza aquí.",
+        "enlace": "./perfumes/index.html"
     },
     {
         "id": 2,
+        "nombre": "Astral Moda",
+        "categoria": "Diseño & Estilo",
+        "logo": "logo_moda.png",
+        "mensaje": "Bienvenidos a nuestra división de ropa. Prendas exclusivas, cortes minimalistas y materiales premium diseñados para romper los límites convencionales.",
+        "enlace": "https://facebook.com/share/1WMubxvPra/"
+    },
+    {
+        "id": 3,
         "nombre": "Astral Tech",
+        "categoria": "Innovación Futura",
         "logo": "logo_tech.png",
-        "mensaje": "Bienvenido a nuestra división tecnológica. Innovación, diseño y el futuro al alcance de tus manos.",
-        "enlace": "https://astraltech.com"
+        "mensaje": "Explora dispositivos de vanguardia, automatizaciones personalizadas y herramientas de software que definen el mañana. El futuro es ahora.",
+        "enlace": "https://github.com/AstralLimit"
     }
 ]

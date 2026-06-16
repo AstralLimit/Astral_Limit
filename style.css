@@ -31,7 +31,6 @@ body {
     100% { opacity: 1; transform: scale(1.4); box-shadow: 0 0 12px #fff, 0 0 20px #fff; }
 }
 
-/* --- CONTROL DE PANTALLAS --- */
 .pantalla {
     width: 100%; min-height: 100vh; box-sizing: border-box;
     display: flex; flex-direction: column; justify-content: flex-start;
@@ -42,82 +41,82 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-/* --- CABECERA MATRIZ (LOGO HECHO MÁS GRANDE) --- */
+/* --- CABECERA MATRIZ --- */
 .cabecera-astral { text-align: center; margin-bottom: 50px; margin-top: 20px; }
 .logo-contenedor { display: flex; align-items: center; justify-content: center; gap: 25px; }
 .logo-astral { 
-    width: 130px; /* Tamaño aumentado significativamente */
-    height: 130px; 
-    border-radius: 50%; 
-    object-fit: cover; 
-    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8); 
-    border: 3px solid rgba(255, 255, 255, 0.4);
+    width: 130px; height: 130px; border-radius: 50%; object-fit: cover; 
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8); border: 3px solid rgba(255, 255, 255, 0.4);
 }
 .titulo-astral { font-family: 'Cinzel', serif; font-size: 3.2rem; margin: 0; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
 
-/* --- SECTOR SELECTOR DE EMPRESAS --- */
 .seccion-marcas { width: 100%; max-width: 1100px; }
 .selector-titulo { font-size: 1.1rem; letter-spacing: 3px; color: var(--plata-brillante); margin-bottom: 40px; font-weight: 600; text-align: center; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
 .grid-marcas { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; width: 100%; }
 
-/* --- TARJETAS BRILLANTES DE LAS MARCAS --- */
+/* --- TARJETAS BRILLANTES --- */
 .tarjeta-marca {
-    background-color: var(--negro-cristal);
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--borde-cristal);
-    border-radius: 20px; 
-    width: 290px; height: 350px; cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
-    overflow: hidden; position: relative;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.03);
+    background-color: var(--negro-cristal); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--borde-cristal); border-radius: 20px; width: 290px; height: 350px; cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    overflow: hidden; position: relative; box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.03);
 }
-
-.tarjeta-marca:hover {
-    transform: translateY(-10px);
-    border-color: #ffffff;
-    box-shadow: 0 0 40px var(--resplandor-estelar), inset 0 0 30px rgba(255, 255, 255, 0.3);
-}
+.tarjeta-marca:hover { transform: translateY(-10px); border-color: #ffffff; box-shadow: 0 0 40px var(--resplandor-estelar), inset 0 0 30px rgba(255, 255, 255, 0.3); }
 
 .banner-categoria-tarjeta {
-    width: 100%; background: linear-gradient(90deg, #ffffff, #e0e0e0);
-    color: var(--negro-espacio); padding: 12px 0; font-size: 0.8rem; font-weight: 700;
-    text-transform: uppercase; letter-spacing: 3px; text-align: center;
-    box-shadow: 0 2px 10px rgba(255,255,255,0.2);
-    z-index: 2; 
+    width: 100%; background: linear-gradient(90deg, #ffffff, #e0e0e0); color: var(--negro-espacio); padding: 12px 0; font-size: 0.8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 3px; text-align: center; box-shadow: 0 2px 10px rgba(255,255,255,0.2); z-index: 2; 
 }
 
-/* AQUÍ SE ELIMINARON LOS BORDES NEGROS RELLENANDO DE BLANCO */
 .contenedor-imagen-tarjeta { 
-    width: 100%; height: calc(100% - 44px); display: flex; 
-    align-items: center; justify-content: center; 
-    padding: 15px; 
-    box-sizing: border-box; overflow: hidden;
-    background-color: #ffffff; /* El fondo blanco unifica toda la tarjeta interior */
+    width: 100%; height: calc(100% - 44px); display: flex; align-items: center; justify-content: center; 
+    padding: 15px; box-sizing: border-box; overflow: hidden; background-color: #ffffff; 
 }
-.img-marca-hub { 
-    width: 100%; height: 100%; 
-    object-fit: contain; 
-    transition: transform 0.4s ease; 
+.img-marca-hub { width: 100%; height: 100%; object-fit: contain; transition: transform 0.4s ease; }
+.tarjeta-marca:hover .img-marca-hub { transform: scale(1.08); }
+
+/* --- EFECTO DE CERRADO EN EL HUB PRINCIPAL --- */
+.tienda-cerrada {
+    opacity: 0.8;
 }
-.tarjeta-marca:hover .img-marca-hub { 
-    transform: scale(1.08); 
+.tienda-cerrada .img-marca-hub {
+    filter: grayscale(100%) opacity(0.6);
+}
+.tienda-cerrada:hover {
+    transform: translateY(-5px); /* Se mueve menos al estar cerrada */
+    border-color: #d32f2f;
+    box-shadow: 0 0 20px rgba(211, 47, 47, 0.5);
+}
+.tienda-cerrada::after {
+    content: "CERRADO";
+    position: absolute;
+    top: 55%;
+    left: -20%;
+    width: 140%;
+    background-color: #d32f2f;
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: 6px;
+    transform: rotate(-25deg);
+    text-align: center;
+    padding: 15px 0;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.8);
+    z-index: 10;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
 }
 
 /* --- PANTALLA INTERNA DE BIENVENIDA --- */
 .tarjeta-presentacion {
-    background-color: var(--negro-cristal); backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 30px;
+    background-color: var(--negro-cristal); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 30px;
     width: 100%; max-width: 550px; padding: 50px 40px; margin: auto; text-align: center;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 0 30px rgba(255,255,255,0.05);
-    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 0 30px rgba(255,255,255,0.05); animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
 .contenedor-logo-marca { width: 150px; height: 150px; margin: 0 auto 30px auto; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255, 255, 255, 0.3); background-color: #ffffff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
 .contenedor-logo-marca img { width: 100%; height: 100%; object-fit: cover; }
-
 .tag-categoria { font-size: 0.8rem; letter-spacing: 5px; color: var(--plata-opaco); text-transform: uppercase; margin: 0 0 10px 0; font-weight: 600; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
 .titulo-marca { font-family: 'Cinzel', serif; font-size: 2.5rem; margin: 0 0 20px 0; letter-spacing: 3px; text-shadow: 0 0 15px rgba(255,255,255,0.4); }
 .mensaje-marca { font-size: 1.05rem; line-height: 1.8; color: #d0d0e0; margin-bottom: 45px; font-weight: 300; }
@@ -139,7 +138,7 @@ body {
 .icono-ws { font-size: 2rem; }
 
 @media (max-width: 600px) {
-    .logo-astral { width: 90px; height: 90px; } /* Ajuste de proporción en celular */
+    .logo-astral { width: 90px; height: 90px; }
     .titulo-astral { font-size: 2.2rem; }
     .tarjeta-presentacion { padding: 40px 20px; }
     .titulo-marca { font-size: 1.8rem; }

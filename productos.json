@@ -17,14 +17,6 @@
                 "stock": 0,
                 "desc": "Destilado artesanal de rosas búlgaras y vainilla. Un elíxir completamente cautivador.",
                 "imagen": "🌹"
-            },
-            {
-                "subseccion": "niños",
-                "nombre": "Astral Kids Sweet",
-                "precio": 450,
-                "stock": 0,
-                "desc": "Aroma tierno y fresco con destellos de cítricos dulces y algodón de azúcar.",
-                "imagen": "🧸"
             }
         ]
     },
@@ -33,35 +25,35 @@
         "productos": [
             {
                 "subseccion": "hombre-playeras",
-                "nombre": "Playera Urban Eclipse",
-                "precio": 450,
-                "stock": 15,
-                "desc": "Algodón premium pesado. Corte oversize con logo minimalista en el pecho.",
+                "nombre": "T-Shirt Armani Exchange",
+                "precio": 1250,
+                "stock": 10,
+                "desc": "Algodón pima de máxima suavidad. Corte ajustado que resalta la figura con el icónico logo en el pecho. Comodidad y estatus en una sola prenda.",
                 "imagen": "👕"
             },
             {
-                "subseccion": "hombre-accesorios",
-                "nombre": "Gorra Solar Black",
-                "precio": 299,
-                "stock": 8,
-                "desc": "Gorra snapback con detalles reflectantes para la ciudad.",
-                "imagen": "🧢"
+                "subseccion": "hombre-playeras",
+                "nombre": "Sudadera Hugo Boss Gold",
+                "precio": 2800,
+                "stock": 5,
+                "desc": "Hoodie premium con interior afelpado. Aislamiento térmico perfecto y detalles dorados que imponen presencia en cualquier clima.",
+                "imagen": "🧥"
             },
             {
-                "subseccion": "mujer-pantalones",
-                "nombre": "Cargo Parachute",
-                "precio": 890,
-                "stock": 5,
-                "desc": "Pantalón estilo paracaidista, ultra cómodo y ajustable en tobillos.",
+                "subseccion": "hombre-pantalones",
+                "nombre": "Jeans Slim-Fit Hugo Boss",
+                "precio": 3500,
+                "stock": 8,
+                "desc": "Denim elástico de alta ingeniería. Se adaptan a tu movimiento sin perder la forma. El pantalón más cómodo y versátil que tendrás en tu armario.",
                 "imagen": "👖"
             },
             {
-                "subseccion": "niños-zapatos",
-                "nombre": "Sneakers Mini-Street",
-                "precio": 650,
-                "stock": 12,
-                "desc": "Tenis urbanos con suela antideslizante y cierre de velcro.",
-                "imagen": "👟"
+                "subseccion": "oferta-mundial",
+                "nombre": "Jersey Edición Especial Mundial",
+                "precio": 1899,
+                "stock": 20,
+                "desc": "Tecnología de secado rápido y ventilación estratégica. Apoya a tu equipo sintiéndote fresco y luciendo impecable dentro y fuera de la cancha.",
+                "imagen": "⚽"
             }
         ]
     },

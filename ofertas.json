@@ -19,8 +19,12 @@
             "texto": ""
         },
         "oferta-mundial": {
-            "activa": false,
-            "texto": ""
+            "activa": true,
+            "texto": "Hoy celebramos el mundial copntigo pide mas de una y nuestros vendedores t haran un descuento digno(aplican restricciones) "
+        },
+        "hombre-playeras": {
+            "activa": true,
+            "texto": "por que papa la merece "
         }
     },
     "Iridio Tech": {}

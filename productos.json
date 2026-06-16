@@ -11,20 +11,12 @@
                 "imagen": "🔮"
             },
             {
-                "subseccion": "hombre ",
-                "nombre": "luz limon ",
-                "precio": 15000,
-                "stock": 2,
-                "desc": "pa mi lulis",
-                "imagen": "no"
-            },
-            {
                 "subseccion": "mujeres",
-                "nombre": "La divina Tentacion",
-                "precio": 1500,
-                "stock": 5,
-                "desc": "Si t sientes con suerte ven y pruebame ",
-                "imagen": "📦"
+                "nombre": "Alqimia Rose Magique",
+                "precio": 920,
+                "stock": 0,
+                "desc": "Destilado artesanal de rosas búlgaras y vainilla. Un elíxir completamente cautivador.",
+                "imagen": "🌹"
             }
         ]
     },
@@ -62,14 +54,6 @@
                 "stock": 20,
                 "desc": "Tecnología de secado rápido y ventilación estratégica. Apoya a tu equipo sintiéndote fresco y luciendo impecable dentro y fuera de la cancha.",
                 "imagen": "⚽"
-            },
-            {
-                "subseccion": "oferta-mundial",
-                "nombre": "playera firmada por messi ",
-                "precio": 10000,
-                "stock": 2,
-                "desc": "firmada 100% real no fake ",
-                "imagen": "📦"
             }
         ]
     },

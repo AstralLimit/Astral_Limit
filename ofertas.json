@@ -2,7 +2,7 @@
     "Alqimia Luma": {
         "hombres": {
             "activa": true,
-            "texto": "Por que es el dia del padre todo este mes llevate el 2do perfume al 50% (habla con nuestros vendedores para mayor decuento) "
+            "texto": "¡DÍA DEL PADRE! Llévate 2x1 en todas las fragancias de esta sección. 🎉"
         },
         "mujeres": {
             "activa": false,
@@ -14,17 +14,25 @@
         }
     },
     "Solar Street": {
-        "oferta-padre": {
+        "hombre": {
+            "activa": true,
+            "texto": "🔥 ¡ESPECIAL DÍA DEL PADRE! 20% de descuento directo en toda la línea Hugo Boss y Armani de caballero. 🧔👔"
+        },
+        "mujer": {
+            "activa": false,
+            "texto": ""
+        },
+        "niños": {
             "activa": false,
             "texto": ""
         },
         "oferta-mundial": {
             "activa": true,
-            "texto": "Hoy celebramos el mundial copntigo pide mas de una y nuestros vendedores t haran un descuento digno(aplican restricciones) "
+            "texto": "⚽ ¡FIEBRE MUNDIALISTA! Llévate pants de regalo comprando cualquier jersey de la sección deportiva. 🏆"
         },
-        "hombre-playeras": {
-            "activa": true,
-            "texto": "por que papa la merece "
+        "oferta-verano": {
+            "activa": false,
+            "texto": ""
         }
     },
     "Iridio Tech": {}

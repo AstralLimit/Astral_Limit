@@ -1,28 +1,29 @@
 let catalogoRopa = [];
+let ofertasRopa = {};
 
-// 1. CARGAR DATOS AL INICIO
-fetch('../productos.json')
-    .then(r => r.json())
-    .then(datos => {
-        let sucursal = datos["Solar Street"];
-        
-        if (sucursal.estado === "cerrado") {
-            document.getElementById("contenedor-catalogo").innerHTML = `
-                <div class="alerta-centro">
-                    <h2>TIENDA CERRADA</h2>
-                    <p>La división Solar Street se encuentra en mantenimiento.</p>
-                </div>`;
-            document.querySelector('.menu-btn').style.display = 'none';
-        } else {
-            catalogoRopa = sucursal.productos;
-            filtrarSeccion('todos');
-        }
-    }).catch(e => console.log("Error cargando productos."));
-
+// 1. CARGAR DATOS Y OFERTAS SIMULTÁNEAMENTE
+Promise.all([
+    fetch('../ofertas.json').then(r => r.json()),
+    fetch('../productos.json').then(r => r.json())
+]).then(([datosOfertas, datosProductos]) => {
+    ofertasRopa = datosOfertas["Solar Street"] || {};
+    let sucursal = datosProductos["Solar Street"];
+    
+    if (sucursal.estado === "cerrado") {
+        document.getElementById("contenedor-catalogo").innerHTML = `
+            <div class="alerta-centro">
+                <h2>TIENDA CERRADA</h2>
+                <p>La división Solar Street se encuentra en mantenimiento.</p>
+            </div>`;
+        document.querySelector('.menu-btn').style.display = 'none';
+    } else {
+        catalogoRopa = sucursal.productos;
+        filtrarSeccion('todos');
+    }
+}).catch(e => console.log("Error de sincronización con la base de datos central."));
 
 // 2. CONTROL DEL MENÚ LATERAL
 function abrirMenu() { 
-    // En móviles ocupa más pantalla, en PC se queda en 300px
     let anchoMenu = window.innerWidth <= 600 ? "85%" : "300px";
     document.getElementById("side-menu").style.width = anchoMenu; 
 }
@@ -30,50 +31,62 @@ function cerrarMenu() {
     document.getElementById("side-menu").style.width = "0"; 
 }
 
-// 3. RENDERIZAR EL CATÁLOGO
-function renderizarCatalogo(productos) {
+// 3. RENDERIZAR EL CATÁLOGO CON BANNERS DINÁMICOS POR BLOQUE
+function renderizarCatalogo(productos, seccionActual) {
     let contenedor = document.getElementById("contenedor-catalogo");
     contenedor.innerHTML = "";
 
+    // LÓGICA DE DETECCIÓN DE BANNER INTELIGENTE
+    let llaveOferta = "";
+    if (seccionActual.startsWith("hombre")) llaveOferta = "hombre";
+    else if (seccionActual.startsWith("mujer")) llaveOferta = "mujer";
+    else if (seccionActual.startsWith("niños")) llaveOferta = "niños";
+    else if (seccionActual === "oferta-mundial") llaveOferta = "oferta-mundial";
+    else if (seccionActual === "oferta-verano") llaveOferta = "oferta-verano";
+
+    // Si hay un banner activo para este bloque de ropa, se inyecta primero
+    if (llaveOferta && ofertasRopa[llaveOferta] && ofertasRopa[llaveOferta].activa) {
+        contenedor.innerHTML += `
+            <div class="banner-oferta-contenedor">
+                <div class="banner-oferta-texto">${ofertasRopa[llaveOferta].texto}</div>
+            </div>`;
+    }
+
     if (productos.length === 0) {
-        contenedor.innerHTML = `
+        contenedor.innerHTML += `
             <div class="alerta-centro">
-                <h2>SIN STOCK</h2>
-                <p>Aún no tenemos prendas disponibles en esta sección.</p>
+                <h2>PRÓXIMAMENTE</h2>
+                <p>Nuestros diseñadores están preparando las prendas para esta sección.</p>
             </div>`;
         return;
     }
 
     productos.forEach(prod => {
-        // Como el carrito está pausado para ropa, el botón es informativo
-        let botonHTML = `<button class="btn-proximamente" disabled>Próximamente</button>`;
-        
         contenedor.innerHTML += `
             <div class="tarjeta">
                 <div class="tarjeta-img">${prod.imagen}</div>
                 <h3 class="nombre-prod">${prod.nombre}</h3>
                 <p class="desc-prod">${prod.desc}</p>
                 <p class="precio-prod">$${prod.precio}</p>
-                ${botonHTML}
+                <button class="btn-proximamente" disabled>Próximamente</button>
             </div>
         `;
     });
 }
 
-// 4. FILTRAR POR SECCIÓN (DESDE EL MENÚ LATERAL)
+// 4. FILTRAR POR SECCIÓN (DESDE EL DRAWER)
 function filtrarSeccion(subseccion) {
-    cerrarMenu(); // Cierra el menú al elegir
+    cerrarMenu();
     
-    // Nombres legibles para el título
     let nombresTitulos = {
         'todos': 'CATÁLOGO COMPLETO',
-        'oferta-padre': 'ESPECIAL DÍA DEL PADRE',
         'oferta-mundial': 'COLECCIÓN MUNDIAL',
-        'hombre-playeras': 'PLAYERAS DE HOMBRE',
+        'oferta-verano': 'TEMPORADA DE VERANO',
+        'hombre-playeras': 'PLAYERAS & SUDADERAS DE HOMBRE',
         'hombre-pantalones': 'PANTALONES DE HOMBRE',
         'hombre-zapatos': 'CALZADO DE HOMBRE',
         'hombre-accesorios': 'ACCESORIOS DE HOMBRE',
-        'mujer-playeras': 'PLAYERAS DE MUJER',
+        'mujer-playeras': 'BLUSAS & PLAYERAS DE MUJER',
         'mujer-pantalones': 'PANTALONES DE MUJER',
         'mujer-zapatos': 'CALZADO DE MUJER',
         'mujer-accesorios': 'ACCESORIOS DE MUJER',
@@ -86,9 +99,9 @@ function filtrarSeccion(subseccion) {
     document.getElementById("titulo-seccion-actual").innerText = nombresTitulos[subseccion] || 'CATÁLOGO';
 
     if (subseccion === 'todos') {
-        renderizarCatalogo(catalogoRopa);
+        renderizarCatalogo(catalogoRopa, subseccion);
     } else {
         let filtrados = catalogoRopa.filter(p => p.subseccion === subseccion);
-        renderizarCatalogo(filtrados);
+        renderizarCatalogo(filtrados, subseccion);
     }
 }

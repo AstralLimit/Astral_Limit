@@ -5,11 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar Street | Ropa & Estilo</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=3.2">
+    <link rel="stylesheet" href="style.css?v=3.3">
 </head>
 <body>
 
-    <!-- MENÚ LATERAL (DRAWER) -->
     <div id="side-menu" class="side-menu">
         <div class="cabecera-menu">
             <h2>MENÚ</h2>
@@ -18,9 +17,9 @@
         <nav class="contenido-menu">
             <button class="btn-categoria inicio" onclick="filtrarSeccion('todos')">🌟 Mostrar Todo</button>
             
-            <h3 class="titulo-seccion">🔥 PROMOCIONES</h3>
-            <button class="btn-categoria oferta" onclick="filtrarSeccion('oferta-padre')">👔 Especial Día del Padre</button>
-            <button class="btn-categoria oferta" onclick="filtrarSeccion('oferta-mundial')">⚽ Colección Mundial</button>
+            <h3 class="titulo-seccion">🔥 COLECCIONES</h3>
+            <button class="btn-categoria" onclick="filtrarSeccion('oferta-mundial')">⚽ Colección Mundial</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('oferta-verano')">🏖️ Temporada de Verano</button>
 
             <h3 class="titulo-seccion">🧔 HOMBRE</h3>
             <button class="btn-categoria" onclick="filtrarSeccion('hombre-playeras')">👕 Playeras & Sudaderas</button>
@@ -42,24 +41,22 @@
         </nav>
     </div>
 
-    <!-- PANTALLA PRINCIPAL -->
     <header class="header-solar">
         <button class="menu-btn" onclick="abrirMenu()">☰</button>
         <h1 class="titulo-gigante">SOLAR STREET</h1>
-        <div style="width: 40px;"></div> <!-- Espaciador para centrar el título -->
+        <div style="width: 40px;"></div>
     </header>
 
     <main class="contenedor-principal">
         <h2 id="titulo-seccion-actual" class="subtitulo-seccion">CATÁLOGO COMPLETO</h2>
         <div class="catalogo" id="contenedor-catalogo">
-            <!-- Los productos se inyectan aquí -->
-        </div>
+            </div>
     </main>
 
     <footer class="pie-pagina">
         <p><a href="../index.html" class="link-volver">← VOLVER A ASTRAL LIMIT</a></p>
     </footer>
 
-    <script src="script.js?v=3.2"></script>
+    <script src="script.js?v=3.3"></script>
 </body>
 </html>

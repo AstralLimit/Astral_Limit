@@ -11,12 +11,12 @@
                 "imagen": "🔮"
             },
             {
-                "subseccion": "mujeres",
-                "nombre": "Alqimia Rose Magique",
-                "precio": 920,
-                "stock": 0,
-                "desc": "Destilado artesanal de rosas búlgaras y vainilla. Un elíxir completamente cautivador.",
-                "imagen": "🌹"
+                "subseccion": "hombre ",
+                "nombre": "luz limon ",
+                "precio": 12000,
+                "stock": 1,
+                "desc": "pa mi lulis",
+                "imagen": "no"
             }
         ]
     },

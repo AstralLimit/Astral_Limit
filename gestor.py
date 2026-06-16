@@ -6,15 +6,14 @@ ARCHIVO_OFERTAS = 'ofertas.json'
 
 ESTRUCTURA_BASE = {
     "Alqimia Luma": {"estado": "abierto", "productos": []},
-    "Astral Moda": {"estado": "abierto", "productos": []},
-    "Astral Tech": {"estado": "abierto", "productos": []}
+    "Solar Street": {"estado": "abierto", "productos": []},
+    "Iridio Tech": {"estado": "abierto", "productos": []}
 }
 
 def cargar_json(ruta, default):
     try:
         with open(ruta, 'r', encoding='utf-8') as f: 
             datos = json.load(f)
-            # Si el archivo viejo es una lista plana, lo reiniciamos a la nueva estructura
             if isinstance(datos, list): return default
             return datos
     except: return default
@@ -93,7 +92,7 @@ def menu_empresa(nombre_empresa, datos):
                 precio = int(input("Precio (solo números): "))
                 stock = int(input("Stock (solo números): "))
             except:
-                print("❌ Error: Usa solo números enteros para precio y stock.")
+                print("❌ Error: Usa solo números enteros.")
                 continue
             desc = input("Descripción corporativa: ")
             
@@ -107,12 +106,12 @@ def menu_empresa(nombre_empresa, datos):
         elif op == '4':
             prods = empresa_data['productos']
             if not prods:
-                print("No hay productos para modificar.")
+                print("No hay productos.")
                 continue
             for i, p in enumerate(prods):
                 print(f"ID: {i} | {p['nombre']} | ${p['precio']} | Stock: {p['stock']}")
             try:
-                idx = int(input("ID del producto a modificar: "))
+                idx = int(input("ID a modificar: "))
                 if 0 <= idx < len(prods):
                     p_nuevo = input(f"Nuevo precio (actual ${prods[idx]['precio']}) [Enter para saltar]: ")
                     s_nuevo = input(f"Nuevo stock (actual {prods[idx]['stock']}) [Enter para saltar]: ")
@@ -121,12 +120,12 @@ def menu_empresa(nombre_empresa, datos):
                     guardar_json(ARCHIVO_PROD, datos)
                     print("✅ Producto actualizado.")
                 else: print("❌ ID inválido.")
-            except: print("❌ Error de formato numérico.")
+            except: print("❌ Error.")
             
         elif op == '5':
             prods = empresa_data['productos']
             try:
-                idx = int(input("ID del producto a eliminar: "))
+                idx = int(input("ID a eliminar: "))
                 if 0 <= idx < len(prods):
                     eliminado = datos[nombre_empresa]['productos'].pop(idx)
                     guardar_json(ARCHIVO_PROD, datos)
@@ -138,23 +137,22 @@ def menu_empresa(nombre_empresa, datos):
 def main():
     while True:
         datos = cargar_json(ARCHIVO_PROD, ESTRUCTURA_BASE)
-        # Aseguramos que la estructura base no se corrompa
         for key in ESTRUCTURA_BASE:
             if key not in datos: datos[key] = ESTRUCTURA_BASE[key]
             
         print("\n=== ASTRAL LIMIT: PANEL MATRIZ ===")
         print("1. Administrar Alqimia Luma (Perfumes)")
-        print("2. Administrar Astral Moda (Ropa)")
-        print("3. Administrar Astral Tech (Tecnología)")
+        print("2. Administrar Solar Street (Ropa)")
+        print("3. Administrar Iridio Tech (Tecnología)")
         print("4. 🏷️ Gestionar Ofertas Globales")
         print("5. 🚀 SUBIR ACTUALIZACIONES A INTERNET")
-        print("6. Salir del Sistema")
+        print("6. Salir")
         
         op = input("Elige una división: ")
         
         if op == '1': menu_empresa("Alqimia Luma", datos)
-        elif op == '2': menu_empresa("Astral Moda", datos)
-        elif op == '3': menu_empresa("Astral Tech", datos)
+        elif op == '2': menu_empresa("Solar Street", datos)
+        elif op == '3': menu_empresa("Iridio Tech", datos)
         elif op == '4': gestionar_ofertas()
         elif op == '5':
             os.system('git add . && git commit -m "Actualizacion Matriz de Empresas" && git push -u origin main')

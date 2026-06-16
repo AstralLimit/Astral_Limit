@@ -9,30 +9,14 @@
                 "stock": 6,
                 "desc": "Fragancia intensa con notas de cuero, ámbar y sándalo. Diseñada para la noche.",
                 "imagen": "🔮"
-            },
-            {
-                "subseccion": "mujeres",
-                "nombre": "Alqimia Rose Magique",
-                "precio": 1000,
-                "stock": 4,
-                "desc": "Destilado artesanal de rosas búlgaras y vainilla. Un elíxir completamente cautivador.",
-                "imagen": "🌹"
-            },
-            {
-                "subseccion": "niños",
-                "nombre": "Astral Kids Sweet",
-                "precio": 450,
-                "stock": 0,
-                "desc": "Aroma tierno y fresco con destellos de cítricos dulces y algodón de azúcar.",
-                "imagen": "🧸"
             }
         ]
     },
-    "Astral Moda": {
+    "Solar Street": {
         "estado": "abierto",
         "productos": []
     },
-    "Astral Tech": {
+    "Iridio Tech": {
         "estado": "abierto",
         "productos": []
     }

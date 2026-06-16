@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Astral Limit | Hub Matrix</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1.4">
+    <link rel="stylesheet" href="style.css?v=1.5">
 </head>
 <body>
 
+    <!-- LIENZO DEL ESPACIO ESTELAR -->
+    <div id="cielo-estrellado"></div>
+
+    <!-- PANTALLA 1: HUB PRINCIPAL -->
     <div id="pantalla-hub" class="pantalla">
         <header class="cabecera-astral">
             <div class="logo-contenedor">
@@ -20,10 +24,12 @@
         <main class="seccion-marcas">
             <h2 class="selector-titulo">¿QUÉ TE GUSTARÍA EXPLORAR HOY?</h2>
             <div id="grid-marcas" class="grid-marcas">
-                </div>
+                <!-- Inyección dinámica desde JS -->
+            </div>
         </main>
     </div>
 
+    <!-- PANTALLA 2: BIENVENIDA DE MARCA -->
     <div id="pantalla-bienvenida" class="pantalla web-oculta">
         <div class="tarjeta-presentacion">
             <div class="contenedor-logo-marca">
@@ -40,14 +46,16 @@
         </div>
     </div>
 
+    <!-- PIE DE PÁGINA GLOBAL -->
     <footer class="soporte-footer">
         <p>¿Problemas con la página o con los productos? <a href="https://wa.me/525649314239?text=Hola,%20tengo%20un%20problema%20o%20duda%20con%20la%20página/productos%20de%20Astral%20Limit" target="_blank" class="link-soporte">Contacta con soporte aquí</a></p>
     </footer>
 
+    <!-- BOTÓN FLOTANTE DE WHATSAPP -->
     <a href="https://wa.me/525649314239?text=Hola,%20tengo%20un%20problema%20o%20duda%20con%20la%20página/productos%20de%20Astral%20Limit" target="_blank" id="whatsapp-flotante">
         <span class="icono-ws">💬</span>
     </a>
 
-    <script src="script.js?v=1.4"></script>
+    <script src="script.js?v=1.5"></script>
 </body>
 </html>

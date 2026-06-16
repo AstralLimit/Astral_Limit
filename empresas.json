@@ -4,23 +4,23 @@
         "nombre": "Alqimia Luma",
         "categoria": "Tu sello personal",
         "logo": "Logo.png",
-        "mensaje": "Adéntrate en el arte de la alta perfumería. Descubre esencias artesanales diseñadas para cautivar y dejar una huella imborrable. Tu viaje sensorial comienza aquí.",
+        "mensaje": "Dicen que el perfume que usas es tu carta de presentación, ¡y nosotros tenemos la fragancia perfecta para ti! 🌸💧",
         "enlace": "./perfumes/index.html"
     },
     {
         "id": 2,
-        "nombre": "Astral Moda",
+        "nombre": "Solar Street",
         "categoria": "Diseño & Estilo",
         "logo": "logo_moda.png",
-        "mensaje": "Bienvenidos a nuestra división de ropa. Prendas exclusivas, cortes minimalistas y materiales premium diseñados para romper los límites convencionales.",
+        "mensaje": "Más que algo que te pones, es esa vibra inconfundible que te envuelve, dándote la fuerza y la comodidad para moverte por la ciudad con total autenticidad.",
         "enlace": "https://facebook.com/share/1WMubxvPra/"
     },
     {
         "id": 3,
-        "nombre": "Astral Tech",
+        "nombre": "Iridio Tech",
         "categoria": "Innovación Futura",
         "logo": "logo_tech.png",
-        "mensaje": "Explora dispositivos de vanguardia, automatizaciones personalizadas y herramientas de software que definen el mañana. El futuro es ahora.",
+        "mensaje": "Iridio Tech: No solo te llevas un gadget nuevo, te llevas el compañero ideal para asegurar que tu mundo digital nunca se detenga.",
         "enlace": "https://github.com/AstralLimit"
     }
 ]

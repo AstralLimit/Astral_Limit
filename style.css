@@ -1,315 +1,130 @@
 :root {
-    --negro-absoluto: #030305;
-    --gris-oscuro: #0a0a0f;
+    --negro-espacio: #010103;
+    --negro-cristal: rgba(10, 10, 15, 0.5);
     --plata-brillante: #ffffff;
-    --plata-opaco: #8f8f9e;
-    --lavanda-sutil: #4d4d66;
-    --neon-glow: rgba(255, 255, 255, 0.15);
+    --plata-opaco: #a3a3b5;
+    --resplandor-estelar: rgba(255, 255, 255, 0.4);
+    --borde-cristal: rgba(255, 255, 255, 0.15);
 }
 
 body {
-    background-color: var(--negro-absoluto);
+    background-color: var(--negro-espacio);
     color: var(--plata-brillante);
     font-family: 'Montserrat', sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
+    margin: 0; padding: 0; min-height: 100vh;
+    display: flex; flex-direction: column; overflow-x: hidden;
+}
+
+/* --- CIELO ESTRELLADO (ANIMACIONES) --- */
+#cielo-estrellado {
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -1; pointer-events: none; overflow: hidden;
+    background: radial-gradient(circle at bottom center, #0a0a1a 0%, #010103 100%);
+}
+.estrella-noche {
+    position: absolute; background-color: #fff; border-radius: 50%;
+    box-shadow: 0 0 8px #fff, 0 0 15px rgba(255, 255, 255, 0.5);
+    animation: titilar infinite alternate ease-in-out;
+}
+@keyframes titilar {
+    0% { opacity: 0.1; transform: scale(0.6); box-shadow: 0 0 2px #fff; }
+    100% { opacity: 1; transform: scale(1.4); box-shadow: 0 0 12px #fff, 0 0 20px #fff; }
 }
 
 /* --- CONTROL DE PANTALLAS --- */
 .pantalla {
-    width: 100%;
-    min-height: 100vh;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 40px 20px 80px 20px; /* Margen abajo para no tapar el footer */
-    animation: fadeIn 0.6s ease forwards;
+    width: 100%; min-height: 100vh; box-sizing: border-box;
+    display: flex; flex-direction: column; justify-content: flex-start;
+    align-items: center; padding: 40px 20px 80px 20px;
+    animation: fadeIn 0.8s ease forwards;
 }
-
 .web-oculta { display: none !important; }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.98); }
-    to { opacity: 1; transform: scale(1); }
-}
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
 /* --- CABECERA MATRIZ --- */
-.cabecera-astral {
-    text-align: center;
-    margin-bottom: 50px;
-    margin-top: 20px;
-}
-
-.logo-contenedor {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 15px;
-}
-
-.logo-astral {
-    width: 50px;
-    height: auto;
-    filter: drop-shadow(0 0 10px rgba(255,255,255,0.4));
-}
-
-.titulo-astral {
-    font-family: 'Cinzel', serif;
-    font-size: 2.5rem;
-    margin: 0;
-    letter-spacing: 6px;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
-}
+.cabecera-astral { text-align: center; margin-bottom: 50px; margin-top: 20px; }
+.logo-contenedor { display: flex; align-items: center; justify-content: center; gap: 15px; }
+.logo-astral { width: 55px; height: auto; filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)); }
+.titulo-astral { font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
 
 /* --- SECTOR SELECTOR DE EMPRESAS --- */
-.seccion-marcas {
-    width: 100%;
-    max-width: 1000px;
-}
+.seccion-marcas { width: 100%; max-width: 1100px; }
+.selector-titulo { font-size: 1.1rem; letter-spacing: 3px; color: var(--plata-brillante); margin-bottom: 40px; font-weight: 600; text-align: center; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
+.grid-marcas { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; width: 100%; }
 
-.selector-titulo {
-    font-size: 1.1rem;
-    letter-spacing: 3px;
-    color: var(--plata-brillante);
-    margin-bottom: 40px;
-    font-weight: 600;
-    text-align: center;
-    text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
-}
-
-.grid-marcas {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    width: 100%;
-}
-
-/* --- NUEVAS TARJETAS LIMPIAS (SIN TÍTULO ABAJO, CON BANNER ARRIBA) --- */
+/* --- TARJETAS BRILLANTES (GLASSMORPHISM) --- */
 .tarjeta-marca {
-    background-color: var(--gris-oscuro);
-    border: 1px solid var(--lavanda-sutil);
-    border-radius: 16px;
-    width: 280px;
-    height: 340px;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    overflow: hidden; /* Corta el banner superior para que encaje en el radio */
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    position: relative;
+    background-color: var(--negro-cristal);
+    backdrop-filter: blur(12px); /* Efecto de cristal esmerilado */
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--borde-cristal);
+    border-radius: 20px; /* Bordes mucho más redondeados y elegantes */
+    width: 290px; height: 350px; cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
+    overflow: hidden; position: relative;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.03);
 }
 
 .tarjeta-marca:hover {
-    transform: translateY(-10px);
-    border-color: var(--plata-brillante);
-    box-shadow: 0 15px 40px var(--neon-glow);
+    transform: translateY(-12px);
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.9), 0 0 30px var(--resplandor-estelar), inset 0 0 30px rgba(255,255,255,0.1);
 }
 
-/* EL BANNER SUPERIOR (BLANCO CON LETRAS NEGRAS) */
+/* EL BANNER SUPERIOR DE LA TARJETA */
 .banner-categoria-tarjeta {
-    width: 100%;
-    background-color: var(--plata-brillante);
-    color: var(--negro-absoluto);
-    padding: 10px 0;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-align: center;
-    border-bottom: 1px solid var(--lavanda-sutil);
+    width: 100%; background: linear-gradient(90deg, #ffffff, #e0e0e0);
+    color: var(--negro-espacio); padding: 12px 0; font-size: 0.8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 3px; text-align: center;
+    box-shadow: 0 2px 10px rgba(255,255,255,0.2);
 }
 
-/* CONTENEDOR DE LA IMAGEN CENTRAL DE LA TARJETA */
-.contenedor-imagen-tarjeta {
-    width: 100%;
-    height: calc(100% - 40px); /* Resta el espacio del banner */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    box-sizing: border-box;
-}
+/* CONTENEDOR DE LA IMAGEN CENTRAL */
+.contenedor-imagen-tarjeta { width: 100%; height: calc(100% - 44px); display: flex; align-items: center; justify-content: center; padding: 25px; box-sizing: border-box; }
+.img-marca-hub { max-width: 100%; max-height: 100%; object-fit: contain; filter: drop-shadow(0 0 15px rgba(255,255,255,0.1)); transition: transform 0.5s ease, filter 0.5s ease; }
+.tarjeta-marca:hover .img-marca-hub { transform: scale(1.1); filter: drop-shadow(0 0 25px rgba(255,255,255,0.4)); }
 
-.img-marca-hub {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain; /* Muestra el logo completo sin deformarlo ni recortarlo */
-    transition: transform 0.3s ease;
-}
-
-.tarjeta-marca:hover .img-marca-hub {
-    transform: scale(1.05);
-}
-
-/* --- PANTALLA INTERNA DE BIENVENIDA (MANTIENE EL CÍRCULO INTERNO) --- */
+/* --- PANTALLA INTERNA DE BIENVENIDA (ESTILO CRISTAL) --- */
 .tarjeta-presentacion {
-    background-color: var(--gris-oscuro);
-    border: 1px solid var(--lavanda-sutil);
-    border-radius: 24px;
-    width: 100%;
-    max-width: 550px;
-    padding: 50px 40px;
-    margin: auto;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.7);
-    animation: slideUp 0.5s ease forwards;
+    background-color: var(--negro-cristal); backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 30px;
+    width: 100%; max-width: 550px; padding: 50px 40px; margin: auto; text-align: center;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.9), inset 0 0 30px rgba(255,255,255,0.05);
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+@keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-@keyframes slideUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
+.contenedor-logo-marca { width: 150px; height: 150px; margin: 0 auto 30px auto; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255, 255, 255, 0.3); background-color: transparent; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+.contenedor-logo-marca img { width: 100%; height: 100%; object-fit: cover; }
 
-.contenedor-logo-marca {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 25px auto;
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--lavanda-sutil);
-    background-color: var(--negro-absoluto);
-}
-
-.contenedor-logo-marca img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.tag-categoria {
-    font-size: 0.75rem;
-    letter-spacing: 4px;
-    color: var(--plata-opaco);
-    text-transform: uppercase;
-    margin: 0 0 10px 0;
-    font-weight: 600;
-}
-
-.titulo-marca {
-    font-family: 'Cinzel', serif;
-    font-size: 2.3rem;
-    margin: 0 0 20px 0;
-    letter-spacing: 2px;
-}
-
-.mensaje-marca {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: #b3b3c6;
-    margin-bottom: 45px;
-    font-weight: 300;
-}
+.tag-categoria { font-size: 0.8rem; letter-spacing: 5px; color: var(--plata-opaco); text-transform: uppercase; margin: 0 0 10px 0; font-weight: 600; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
+.titulo-marca { font-family: 'Cinzel', serif; font-size: 2.5rem; margin: 0 0 20px 0; letter-spacing: 3px; text-shadow: 0 0 15px rgba(255,255,255,0.4); }
+.mensaje-marca { font-size: 1.05rem; line-height: 1.8; color: #d0d0e0; margin-bottom: 45px; font-weight: 300; }
 
 /* BOTONES */
-.grupo-botones {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    width: 100%;
-}
+.grupo-botones { display: flex; flex-direction: column; gap: 20px; align-items: center; width: 100%; }
+.btn-corporativo { background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 100%); color: var(--negro-espacio); border: none; padding: 20px 40px; font-size: 1rem; font-weight: 700; letter-spacing: 3px; cursor: pointer; border-radius: 40px; width: 100%; max-width: 380px; transition: all 0.4s ease; box-shadow: 0 5px 15px rgba(255,255,255,0.2); }
+.btn-brillante:hover { box-shadow: 0 0 35px rgba(255, 255, 255, 0.6); transform: scale(1.03) translateY(-2px); }
+.btn-regresar { background: transparent; color: var(--plata-opaco); border: none; font-size: 0.85rem; font-weight: 600; letter-spacing: 2px; cursor: pointer; transition: color 0.3s, text-shadow 0.3s; }
+.btn-regresar:hover { color: var(--plata-brillante); text-shadow: 0 0 10px white; }
 
-.btn-corporativo {
-    background-color: var(--plata-brillante);
-    color: var(--negro-absoluto);
-    border: none;
-    padding: 18px 40px;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 3px;
-    cursor: pointer;
-    border-radius: 30px;
-    width: 100%;
-    max-width: 380px;
-    transition: all 0.3s ease;
-}
+/* --- SOPORTE PIE DE PÁGINA --- */
+.soporte-footer { width: 100%; text-align: center; padding: 20px 0; background-color: rgba(5, 5, 10, 0.85); border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.85rem; color: var(--plata-opaco); position: fixed; bottom: 0; left: 0; z-index: 50; backdrop-filter: blur(10px); }
+.link-soporte { color: var(--plata-brillante); text-decoration: underline; font-weight: 600; transition: color 0.3s; }
+.link-soporte:hover { color: #25d366; text-shadow: 0 0 10px #25d366; }
 
-.btn-brillante:hover {
-    box-shadow: 0 0 30px rgba(255, 255, 255, 0.4);
-    transform: scale(1.02);
-}
-
-.btn-regresar {
-    background: transparent;
-    color: var(--plata-opaco);
-    border: none;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: color 0.3s;
-}
-
-.btn-regresar:hover { color: var(--plata-brillante); }
-
-/* --- SOPORTE PIE DE PÁGINA GLOBAL --- */
-.soporte-footer {
-    width: 100%;
-    text-align: center;
-    padding: 20px 0;
-    background-color: rgba(10, 10, 15, 0.8);
-    border-top: 1px solid var(--lavanda-sutil);
-    font-size: 0.85rem;
-    color: var(--plata-opaco);
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 50;
-    backdrop-filter: blur(5px);
-}
-
-.link-soporte {
-    color: var(--plata-brillante);
-    text-decoration: underline;
-    font-weight: 600;
-}
-.link-soporte:hover {
-    color: #25d366; /* Tono verde WhatsApp al pasar el mouse */
-}
-
-/* --- BOTÓN FLOTANTE DE WHATSAPP --- */
-#whatsapp-flotante {
-    position: fixed;
-    bottom: 80px; /* Colocado arriba del footer fijo */
-    right: 20px;
-    background-color: #25d366; /* Color oficial WhatsApp */
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-    z-index: 1000;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-}
-
-#whatsapp-flotante:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
-}
-
-.icono-ws {
-    font-size: 1.8rem;
-}
+/* --- BOTÓN WHATSAPP --- */
+#whatsapp-flotante { position: fixed; bottom: 85px; right: 25px; background-color: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 5px 20px rgba(37, 211, 102, 0.4); z-index: 1000; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease; text-decoration: none; }
+#whatsapp-flotante:hover { transform: scale(1.15) rotate(5deg); box-shadow: 0 8px 30px rgba(37, 211, 102, 0.7); }
+.icono-ws { font-size: 2rem; }
 
 @media (max-width: 600px) {
-    .titulo-astral { font-size: 1.8rem; }
-    .tarjeta-presentacion { padding: 35px 20px; }
-    .titulo-marca { font-size: 1.7rem; }
+    .titulo-astral { font-size: 2rem; }
+    .tarjeta-presentacion { padding: 40px 20px; }
+    .titulo-marca { font-size: 1.8rem; }
     .soporte-footer { font-size: 0.75rem; padding: 15px 10px; }
-    #whatsapp-flotante { bottom: 90px; width: 50px; height: 50px; }
-    .icono-ws { font-size: 1.5rem; }
+    #whatsapp-flotante { bottom: 90px; width: 55px; height: 55px; }
+    .icono-ws { font-size: 1.6rem; }
 }

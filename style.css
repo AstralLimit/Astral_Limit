@@ -42,18 +42,18 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-/* --- CABECERA MATRIZ (AQUÍ SE CORRIGIÓ EL LOGO ASTRAL LIMIT) --- */
+/* --- CABECERA MATRIZ (LOGO HECHO MÁS GRANDE) --- */
 .cabecera-astral { text-align: center; margin-bottom: 50px; margin-top: 20px; }
-.logo-contenedor { display: flex; align-items: center; justify-content: center; gap: 20px; }
+.logo-contenedor { display: flex; align-items: center; justify-content: center; gap: 25px; }
 .logo-astral { 
-    width: 90px; /* Más grande */
-    height: 90px; /* Alto exacto para que sea simétrico */
-    border-radius: 50%; /* Lo recorta en un círculo perfecto */
-    object-fit: cover; /* Evita que se deforme */
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); /* Brillo circular */
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 130px; /* Tamaño aumentado significativamente */
+    height: 130px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.8); 
+    border: 3px solid rgba(255, 255, 255, 0.4);
 }
-.titulo-astral { font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
+.titulo-astral { font-family: 'Cinzel', serif; font-size: 3.2rem; margin: 0; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
 
 /* --- SECTOR SELECTOR DE EMPRESAS --- */
 .seccion-marcas { width: 100%; max-width: 1100px; }
@@ -88,21 +88,21 @@ body {
     z-index: 2; 
 }
 
-/* AQUÍ SE CORRIGIÓ LA IMAGEN VERTICAL (EJ. SOLAR STREET) */
+/* AQUÍ SE ELIMINARON LOS BORDES NEGROS RELLENANDO DE BLANCO */
 .contenedor-imagen-tarjeta { 
     width: 100%; height: calc(100% - 44px); display: flex; 
     align-items: center; justify-content: center; 
-    padding: 15px; /* Margen para que no pegue con los bordes */
+    padding: 15px; 
     box-sizing: border-box; overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.3); /* Relleno oscuro sutil para imágenes delgadas */
+    background-color: #ffffff; /* El fondo blanco unifica toda la tarjeta interior */
 }
 .img-marca-hub { 
     width: 100%; height: 100%; 
-    object-fit: contain; /* Ajusta la imagen completa sin recortarla */
+    object-fit: contain; 
     transition: transform 0.4s ease; 
 }
 .tarjeta-marca:hover .img-marca-hub { 
-    transform: scale(1.08); /* Zoom sutil para no deformar */
+    transform: scale(1.08); 
 }
 
 /* --- PANTALLA INTERNA DE BIENVENIDA --- */
@@ -115,7 +115,7 @@ body {
 }
 @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-.contenedor-logo-marca { width: 150px; height: 150px; margin: 0 auto 30px auto; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255, 255, 255, 0.3); background-color: transparent; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
+.contenedor-logo-marca { width: 150px; height: 150px; margin: 0 auto 30px auto; border-radius: 50%; overflow: hidden; border: 3px solid rgba(255, 255, 255, 0.3); background-color: #ffffff; box-shadow: 0 0 20px rgba(255, 255, 255, 0.2); }
 .contenedor-logo-marca img { width: 100%; height: 100%; object-fit: cover; }
 
 .tag-categoria { font-size: 0.8rem; letter-spacing: 5px; color: var(--plata-opaco); text-transform: uppercase; margin: 0 0 10px 0; font-weight: 600; text-shadow: 0 0 5px rgba(255,255,255,0.2); }
@@ -139,8 +139,8 @@ body {
 .icono-ws { font-size: 2rem; }
 
 @media (max-width: 600px) {
-    .logo-astral { width: 70px; height: 70px; }
-    .titulo-astral { font-size: 2rem; }
+    .logo-astral { width: 90px; height: 90px; } /* Ajuste de proporción en celular */
+    .titulo-astral { font-size: 2.2rem; }
     .tarjeta-presentacion { padding: 40px 20px; }
     .titulo-marca { font-size: 1.8rem; }
     .soporte-footer { font-size: 0.75rem; padding: 15px 10px; }

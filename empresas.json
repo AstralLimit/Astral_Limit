@@ -13,7 +13,7 @@
         "categoria": "Diseño & Estilo",
         "logo": "logo_moda.png",
         "mensaje": "Más que algo que te pones, es esa vibra inconfundible que te envuelve, dándote la fuerza y la comodidad para moverte por la ciudad con total autenticidad.",
-        "enlace": "https://facebook.com/share/1WMubxvPra/"
+        "enlace": "./ropa/index.html"
     },
     {
         "id": 3,
@@ -21,6 +21,6 @@
         "categoria": "Innovación Futura",
         "logo": "logo_tech.png",
         "mensaje": "Iridio Tech: No solo te llevas un gadget nuevo, te llevas el compañero ideal para asegurar que tu mundo digital nunca se detenga.",
-        "enlace": "https://github.com/AstralLimit"
+        "enlace": "./tecnologia/index.html"
     }
 ]

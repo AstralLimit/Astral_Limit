@@ -1,0 +1,10 @@
+/* Estilo básico del Menú Lateral */
+.side-menu {
+    height: 100%; width: 0; position: fixed; z-index: 2000; top: 0; left: 0;
+    background-color: #000; overflow-x: hidden; transition: 0.5s; padding-top: 60px;
+}
+.side-menu button {
+    display: block; width: 100%; padding: 15px; border: none;
+    background: none; color: #fff; text-align: left; font-size: 1.2rem;
+}
+.menu-btn { font-size: 2rem; background: none; border: none; color: #000; cursor: pointer; }

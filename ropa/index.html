@@ -4,70 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar Street | Ropa & Estilo</title>
-    <style>
-        body {
-            background-color: #ffffff;
-            color: #000000;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-        .contenedor-placeholder {
-            text-align: center;
-            border: 2px solid #000000;
-            padding: 50px 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 450px;
-        }
-        h1 {
-            font-size: 2.8rem;
-            margin: 0 0 10px 0;
-            letter-spacing: 4px;
-            font-weight: 800;
-        }
-        p {
-            font-size: 1.1rem;
-            color: #444444;
-            margin: 0 0 20px 0;
-            letter-spacing: 1px;
-        }
-        .estado-aviso {
-            font-style: italic;
-            color: #888888;
-            font-size: 0.95rem;
-            margin-bottom: 35px;
-        }
-        .btn-volver {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 14px 28px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            transition: background-color 0.3s, transform 0.2s;
-            display: inline-block;
-        }
-        .btn-volver:hover {
-            background-color: #333333;
-            transform: translateY(-2px);
-        }
-    </style>
+    <link rel="stylesheet" href="style.css?v=3.0">
 </head>
 <body>
-
-    <div class="contenedor-placeholder">
+    <header>
+        <button class="menu-btn" onclick="abrirMenu()">☰</button>
         <h1>SOLAR STREET</h1>
-        <p>División de Ropa y Estilo Urbano</p>
-        <div class="estado-aviso">[ Ecosistema en desarrollo - Próximamente catálogo completo ]</div>
-        <a href="../index.html" class="btn-volver">← VOLVER AL MENÚ CENTRAL</a>
+    </header>
+
+    <!-- MENÚ LATERAL (DRAWER) -->
+    <div id="side-menu" class="side-menu">
+        <button class="cerrar-menu" onclick="cerrarMenu()">×</button>
+        <nav>
+            <h3>🌟 Ofertas</h3>
+            <button onclick="filtrar('ofertas')">🔥 Día del Padre</button>
+            <h3>Hombre</h3>
+            <button onclick="filtrar('hombre-playeras')">👕 Playeras</button>
+            <button onclick="filtrar('hombre-pantalones')">👖 Pantalones</button>
+            <button onclick="filtrar('hombre-zapatos')">👟 Zapatos</button>
+            <h3>Mujer</h3>
+            <button onclick="filtrar('mujer-playeras')">👚 Playeras</button>
+            <!-- Repetir lógica según necesidad -->
+        </nav>
     </div>
 
+    <div id="contenedor-catalogo" class="catalogo"></div>
+
+    <script src="script.js?v=3.0"></script>
 </body>
 </html>

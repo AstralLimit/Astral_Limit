@@ -14,7 +14,16 @@
     },
     "Solar Street": {
         "estado": "abierto",
-        "productos": []
+        "productos": [
+            {
+                "categoria": "ropa",
+                "subseccion": "hombre-playeras",
+                "nombre": "Playera Astral",
+                "precio": 350,
+                "esOferta": true,
+                "textoOferta": "2x1 Día del Padre"
+            }
+        ]
     },
     "Iridio Tech": {
         "estado": "abierto",

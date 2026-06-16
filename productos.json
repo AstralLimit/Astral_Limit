@@ -13,10 +13,18 @@
             {
                 "subseccion": "hombre ",
                 "nombre": "luz limon ",
-                "precio": 12000,
-                "stock": 1,
+                "precio": 15000,
+                "stock": 2,
                 "desc": "pa mi lulis",
                 "imagen": "no"
+            },
+            {
+                "subseccion": "mujeres",
+                "nombre": "La divina Tentacion",
+                "precio": 1500,
+                "stock": 5,
+                "desc": "Si t sientes con suerte ven y pruebame ",
+                "imagen": "📦"
             }
         ]
     },

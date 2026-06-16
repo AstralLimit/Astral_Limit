@@ -1,12 +1,27 @@
 {
     "Alqimia Luma": {
-        "hombres": {"activa": false, "texto": ""},
-        "mujeres": {"activa": false, "texto": ""},
-        "niños": {"activa": false, "texto": ""}
+        "hombres": {
+            "activa": true,
+            "texto": "Por que es el dia del padre todo este mes llevate el 2do perfume al 50% (habla con nuestros vendedores para mayor decuento) "
+        },
+        "mujeres": {
+            "activa": false,
+            "texto": ""
+        },
+        "niños": {
+            "activa": false,
+            "texto": ""
+        }
     },
     "Solar Street": {
-        "oferta-padre": {"activa": false, "texto": ""},
-        "oferta-mundial": {"activa": false, "texto": ""}
+        "oferta-padre": {
+            "activa": false,
+            "texto": ""
+        },
+        "oferta-mundial": {
+            "activa": false,
+            "texto": ""
+        }
     },
     "Iridio Tech": {}
 }

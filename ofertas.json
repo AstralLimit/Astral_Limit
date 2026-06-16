@@ -1,14 +1,12 @@
 {
-    "hombres": {
-        "activa": true,
-        "texto": "EL DÍA DEL PADRE ESTA AQUI, COMPRA 1 Y LLEVATE EL 2° al %50 DE DESCUENTO"
+    "Alqimia Luma": {
+        "hombres": {"activa": false, "texto": ""},
+        "mujeres": {"activa": false, "texto": ""},
+        "niños": {"activa": false, "texto": ""}
     },
-    "mujeres": {
-        "activa": false,
-        "texto": ""
+    "Solar Street": {
+        "oferta-padre": {"activa": false, "texto": ""},
+        "oferta-mundial": {"activa": false, "texto": ""}
     },
-    "niños": {
-        "activa": false,
-        "texto": ""
-    }
+    "Iridio Tech": {}
 }

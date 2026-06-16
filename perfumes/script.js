@@ -7,10 +7,7 @@ let ofertasGlobales = {};
 function crearFondoMagico() {
     let contenedor = document.getElementById('contenedor-magico');
     let colores = ["%23EFBF04", "%232B0071"]; 
-    
-    // Detectamos si es pantalla chica
     let esCelular = window.innerWidth <= 600;
-    // Si es celular, ponemos menos de la mitad de estrellas
     let cantidadEstrellas = esCelular ? 15 : 40; 
 
     for (let i = 0; i < cantidadEstrellas; i++) {
@@ -18,10 +15,7 @@ function crearFondoMagico() {
         estrella.className = 'estrella-js';
         estrella.style.top = Math.random() * 100 + '%'; 
         estrella.style.left = Math.random() * 100 + '%'; 
-        
-        // Tamaños chiquitos y elegantes para celular, normales para PC
         let size = esCelular ? (Math.random() * 30 + 15) : (Math.random() * 70 + 25); 
-        
         estrella.style.width = size + 'px'; estrella.style.height = size + 'px';
         let color = colores[Math.floor(Math.random() * colores.length)];
         estrella.style.backgroundImage = `url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0 Q12 12 24 12 Q12 12 12 24 Q12 12 0 12 Q12 12 12 0 Z' fill='${color}'/%3E%3C/svg%3E")`;
@@ -31,10 +25,11 @@ function crearFondoMagico() {
 }
 crearFondoMagico();
 
+// LEE LAS OFERTAS EXCLUSIVAS DE ALQIMIA LUMA
 fetch('../ofertas.json')
     .then(r => r.json())
     .then(ofertas => {
-        ofertasGlobales = ofertas;
+        ofertasGlobales = ofertas["Alqimia Luma"] || {};
         colocarEtiquetasOferta();
         
         fetch('../productos.json')

@@ -9,6 +9,22 @@
                 "stock": 6,
                 "desc": "Fragancia intensa con notas de cuero, ámbar y sándalo. Diseñada para la noche.",
                 "imagen": "🔮"
+            },
+            {
+                "subseccion": "mujeres",
+                "nombre": "Alqimia Rose Magique",
+                "precio": 920,
+                "stock": 0,
+                "desc": "Destilado artesanal de rosas búlgaras y vainilla. Un elíxir completamente cautivador.",
+                "imagen": "🌹"
+            },
+            {
+                "subseccion": "niños",
+                "nombre": "Astral Kids Sweet",
+                "precio": 450,
+                "stock": 0,
+                "desc": "Aroma tierno y fresco con destellos de cítricos dulces y algodón de azúcar.",
+                "imagen": "🧸"
             }
         ]
     },
@@ -16,12 +32,36 @@
         "estado": "abierto",
         "productos": [
             {
-                "categoria": "ropa",
                 "subseccion": "hombre-playeras",
-                "nombre": "Playera Astral",
-                "precio": 350,
-                "esOferta": true,
-                "textoOferta": "2x1 Día del Padre"
+                "nombre": "Playera Urban Eclipse",
+                "precio": 450,
+                "stock": 15,
+                "desc": "Algodón premium pesado. Corte oversize con logo minimalista en el pecho.",
+                "imagen": "👕"
+            },
+            {
+                "subseccion": "hombre-accesorios",
+                "nombre": "Gorra Solar Black",
+                "precio": 299,
+                "stock": 8,
+                "desc": "Gorra snapback con detalles reflectantes para la ciudad.",
+                "imagen": "🧢"
+            },
+            {
+                "subseccion": "mujer-pantalones",
+                "nombre": "Cargo Parachute",
+                "precio": 890,
+                "stock": 5,
+                "desc": "Pantalón estilo paracaidista, ultra cómodo y ajustable en tobillos.",
+                "imagen": "👖"
+            },
+            {
+                "subseccion": "niños-zapatos",
+                "nombre": "Sneakers Mini-Street",
+                "precio": 650,
+                "stock": 12,
+                "desc": "Tenis urbanos con suela antideslizante y cierre de velcro.",
+                "imagen": "👟"
             }
         ]
     },

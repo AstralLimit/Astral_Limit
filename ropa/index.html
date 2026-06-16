@@ -4,32 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solar Street | Ropa & Estilo</title>
-    <link rel="stylesheet" href="style.css?v=3.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=3.2">
 </head>
 <body>
-    <header>
-        <button class="menu-btn" onclick="abrirMenu()">☰</button>
-        <h1>SOLAR STREET</h1>
-    </header>
 
     <!-- MENÚ LATERAL (DRAWER) -->
     <div id="side-menu" class="side-menu">
-        <button class="cerrar-menu" onclick="cerrarMenu()">×</button>
-        <nav>
-            <h3>🌟 Ofertas</h3>
-            <button onclick="filtrar('ofertas')">🔥 Día del Padre</button>
-            <h3>Hombre</h3>
-            <button onclick="filtrar('hombre-playeras')">👕 Playeras</button>
-            <button onclick="filtrar('hombre-pantalones')">👖 Pantalones</button>
-            <button onclick="filtrar('hombre-zapatos')">👟 Zapatos</button>
-            <h3>Mujer</h3>
-            <button onclick="filtrar('mujer-playeras')">👚 Playeras</button>
-            <!-- Repetir lógica según necesidad -->
+        <div class="cabecera-menu">
+            <h2>MENÚ</h2>
+            <button class="cerrar-menu" onclick="cerrarMenu()">×</button>
+        </div>
+        <nav class="contenido-menu">
+            <button class="btn-categoria inicio" onclick="filtrarSeccion('todos')">🌟 Mostrar Todo</button>
+            
+            <h3 class="titulo-seccion">🔥 PROMOCIONES</h3>
+            <button class="btn-categoria oferta" onclick="filtrarSeccion('oferta-padre')">👔 Especial Día del Padre</button>
+            <button class="btn-categoria oferta" onclick="filtrarSeccion('oferta-mundial')">⚽ Colección Mundial</button>
+
+            <h3 class="titulo-seccion">🧔 HOMBRE</h3>
+            <button class="btn-categoria" onclick="filtrarSeccion('hombre-playeras')">👕 Playeras & Sudaderas</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('hombre-pantalones')">👖 Pantalones & Jeans</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('hombre-zapatos')">👟 Zapatos & Sneakers</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('hombre-accesorios')">🕶️ Accesorios</button>
+
+            <h3 class="titulo-seccion">👩 MUJER</h3>
+            <button class="btn-categoria" onclick="filtrarSeccion('mujer-playeras')">👚 Blusas & Playeras</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('mujer-pantalones')">👖 Pantalones & Faldas</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('mujer-zapatos')">👠 Zapatos & Sneakers</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('mujer-accesorios')">👜 Accesorios</button>
+
+            <h3 class="titulo-seccion">🧸 NIÑOS</h3>
+            <button class="btn-categoria" onclick="filtrarSeccion('niños-playeras')">👕 Playeras</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('niños-pantalones')">👖 Pantalones</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('niños-zapatos')">👟 Zapatos</button>
+            <button class="btn-categoria" onclick="filtrarSeccion('niños-accesorios')">🎒 Accesorios</button>
         </nav>
     </div>
 
-    <div id="contenedor-catalogo" class="catalogo"></div>
+    <!-- PANTALLA PRINCIPAL -->
+    <header class="header-solar">
+        <button class="menu-btn" onclick="abrirMenu()">☰</button>
+        <h1 class="titulo-gigante">SOLAR STREET</h1>
+        <div style="width: 40px;"></div> <!-- Espaciador para centrar el título -->
+    </header>
 
-    <script src="script.js?v=3.0"></script>
+    <main class="contenedor-principal">
+        <h2 id="titulo-seccion-actual" class="subtitulo-seccion">CATÁLOGO COMPLETO</h2>
+        <div class="catalogo" id="contenedor-catalogo">
+            <!-- Los productos se inyectan aquí -->
+        </div>
+    </main>
+
+    <footer class="pie-pagina">
+        <p><a href="../index.html" class="link-volver">← VOLVER A ASTRAL LIMIT</a></p>
+    </footer>
+
+    <script src="script.js?v=3.2"></script>
 </body>
 </html>

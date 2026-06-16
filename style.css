@@ -42,10 +42,17 @@ body {
 
 @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 
-/* --- CABECERA MATRIZ --- */
+/* --- CABECERA MATRIZ (AQUÍ SE CORRIGIÓ EL LOGO ASTRAL LIMIT) --- */
 .cabecera-astral { text-align: center; margin-bottom: 50px; margin-top: 20px; }
-.logo-contenedor { display: flex; align-items: center; justify-content: center; gap: 15px; }
-.logo-astral { width: 55px; height: auto; filter: drop-shadow(0 0 15px rgba(255,255,255,0.8)); }
+.logo-contenedor { display: flex; align-items: center; justify-content: center; gap: 20px; }
+.logo-astral { 
+    width: 90px; /* Más grande */
+    height: 90px; /* Alto exacto para que sea simétrico */
+    border-radius: 50%; /* Lo recorta en un círculo perfecto */
+    object-fit: cover; /* Evita que se deforme */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7); /* Brillo circular */
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
 .titulo-astral { font-family: 'Cinzel', serif; font-size: 2.8rem; margin: 0; letter-spacing: 6px; text-shadow: 0 0 20px rgba(255, 255, 255, 0.6); }
 
 /* --- SECTOR SELECTOR DE EMPRESAS --- */
@@ -53,7 +60,7 @@ body {
 .selector-titulo { font-size: 1.1rem; letter-spacing: 3px; color: var(--plata-brillante); margin-bottom: 40px; font-weight: 600; text-align: center; text-shadow: 0 0 10px rgba(255, 255, 255, 0.4); }
 .grid-marcas { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; width: 100%; }
 
-/* --- TARJETAS BRILLANTES (GLASSMORPHISM CORREGIDO) --- */
+/* --- TARJETAS BRILLANTES DE LAS MARCAS --- */
 .tarjeta-marca {
     background-color: var(--negro-cristal);
     backdrop-filter: blur(12px); 
@@ -67,7 +74,6 @@ body {
     box-shadow: 0 15px 35px rgba(0,0,0,0.8), inset 0 0 20px rgba(255,255,255,0.03);
 }
 
-/* AQUÍ ESTÁ LA MAGIA: El recuadro completo se ilumina fuertemente */
 .tarjeta-marca:hover {
     transform: translateY(-10px);
     border-color: #ffffff;
@@ -82,17 +88,21 @@ body {
     z-index: 2; 
 }
 
+/* AQUÍ SE CORRIGIÓ LA IMAGEN VERTICAL (EJ. SOLAR STREET) */
 .contenedor-imagen-tarjeta { 
     width: 100%; height: calc(100% - 44px); display: flex; 
-    align-items: center; justify-content: center; padding: 0; 
+    align-items: center; justify-content: center; 
+    padding: 15px; /* Margen para que no pegue con los bordes */
     box-sizing: border-box; overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.3); /* Relleno oscuro sutil para imágenes delgadas */
 }
 .img-marca-hub { 
-    width: 100%; height: 100%; object-fit: cover; 
+    width: 100%; height: 100%; 
+    object-fit: contain; /* Ajusta la imagen completa sin recortarla */
     transition: transform 0.4s ease; 
 }
 .tarjeta-marca:hover .img-marca-hub { 
-    transform: scale(1.1); /* Zoom sutil a la imagen para no marear */
+    transform: scale(1.08); /* Zoom sutil para no deformar */
 }
 
 /* --- PANTALLA INTERNA DE BIENVENIDA --- */
@@ -129,6 +139,7 @@ body {
 .icono-ws { font-size: 2rem; }
 
 @media (max-width: 600px) {
+    .logo-astral { width: 70px; height: 70px; }
     .titulo-astral { font-size: 2rem; }
     .tarjeta-presentacion { padding: 40px 20px; }
     .titulo-marca { font-size: 1.8rem; }

@@ -12,7 +12,7 @@
         "nombre": "Solar Street",
         "categoria": "Diseño & Estilo",
         "logo": "logo_moda.png",
-        "mensaje": "Más que algo que te pones, es esa vibra inconfundible que te envuelve, dándote la fuerza y la comodidad para moverte por la ciudad con total autenticidad.",
+        "mensaje": "Más que algo que te pones, es esa vibra inconfundible que te envuelve, dándote la fuerza y la comodidad para moverte por la ciudad con total autenticidad. 🕶️🏙️🔥",
         "enlace": "./ropa/index.html"
     },
     {
@@ -20,7 +20,7 @@
         "nombre": "Iridio Tech",
         "categoria": "Innovación Futura",
         "logo": "logo_tech.png",
-        "mensaje": "Iridio Tech: No solo te llevas un gadget nuevo, te llevas el compañero ideal para asegurar que tu mundo digital nunca se detenga.",
+        "mensaje": "Iridio Tech: No solo te llevas un gadget nuevo, te llevas el compañero ideal para asegurar que tu mundo digital nunca se detenga. ⚡📱💻",
         "enlace": "./tecnologia/index.html"
     }
 ]

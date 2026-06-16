@@ -3,16 +3,25 @@ let totalPrecio = 0; let totalArticulos = 0;
 let catalogoPerfumes = [];
 let ofertasGlobales = {};
 
-// Fondo mágico con estrellas más densas (doradas y azules)
+// Fondo mágico INTELIGENTE (detecta celulares para no saturar)
 function crearFondoMagico() {
     let contenedor = document.getElementById('contenedor-magico');
     let colores = ["%23EFBF04", "%232B0071"]; 
-    for (let i = 0; i < 45; i++) {
+    
+    // Detectamos si es pantalla chica
+    let esCelular = window.innerWidth <= 600;
+    // Si es celular, ponemos menos de la mitad de estrellas
+    let cantidadEstrellas = esCelular ? 15 : 40; 
+
+    for (let i = 0; i < cantidadEstrellas; i++) {
         let estrella = document.createElement('div');
         estrella.className = 'estrella-js';
         estrella.style.top = Math.random() * 100 + '%'; 
         estrella.style.left = Math.random() * 100 + '%'; 
-        let size = Math.random() * 80 + 30; 
+        
+        // Tamaños chiquitos y elegantes para celular, normales para PC
+        let size = esCelular ? (Math.random() * 30 + 15) : (Math.random() * 70 + 25); 
+        
         estrella.style.width = size + 'px'; estrella.style.height = size + 'px';
         let color = colores[Math.floor(Math.random() * colores.length)];
         estrella.style.backgroundImage = `url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 0 Q12 12 24 12 Q12 12 12 24 Q12 12 0 12 Q12 12 12 0 Z' fill='${color}'/%3E%3C/svg%3E")`;
@@ -109,7 +118,6 @@ function filtrarSeccion(subseccion) {
     }
 }
 
-// CORRECCIÓN AQUÍ: Se cambió 'candy' por 'cantidad' para guardar el producto bien
 function agregarAlCarrito(nombre, precio) {
     if (carrito[nombre]) {
         carrito[nombre].cantidad += 1;
@@ -119,10 +127,8 @@ function agregarAlCarrito(nombre, precio) {
     totalPrecio += precio; 
     totalArticulos += 1;
     document.getElementById("contador").innerText = totalArticulos;
-    alert("🌙 ¡Agregaste " + nombre + " al carrito!");
 }
 
-// CORRECCIÓN AQUÍ: Ahora lee correctamente la propiedad 'precio' y despliega el modal impecable
 function abrirCarrito() {
     let divLista = document.getElementById("lista-carrito"); 
     divLista.innerHTML = ""; 
